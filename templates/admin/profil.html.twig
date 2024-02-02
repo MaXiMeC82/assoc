@@ -43,31 +43,42 @@ Bienvenue
             </div>
 <div class="container">
     <div class="row">
-        <div class="col-6 offset-3 text-center">
-            <div class="bckgndclr-1">
+        <div class="col-12 col-md-6 offset-md-3 text-center">
+            <div class="bckgndclr">
                 <ul class="list-group list-group-horizontal d-flex mx-2 align-items-center">
                     <li class="list-group-item list-group-item-light flex-fill text-center text-black mt-2 mb-2 border border-0">Travaux publics</li>
-                    <li class="list-group-item list-group-item-light flex-fill text-center text-black mt-2 mb-2 border border-0">Avancé</li>
+                    {# <li class="list-group-item list-group-item-light flex-fill text-center text-black mt-2 mb-2 border border-0">Avancé</li> #}
                     <li class="list-group-item list-group-item-light flex-fill text-center mt-2 mb-2 p-1 border border-0" ><a class="btn btn-primary" style="--bs-btn-padding-y: .39rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: 0.75rem;" href="#" role="button">Modifier</a></li>
                     <li class="list-group-item list-group-item-light flex-fill text-center mt-2 mb-2 p-1 border border-0"><button class="btn btn-outline-info" style="--bs-btn-padding-y: .39rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: 0.75rem;" type="submit">Supprimer</button></li>
                 </ul>
-                <button type="button" class="btn btn-primary mx-2 rounded-2 mt-4 mb-4">Ajouter une compétence</button>
+                <!-- Bouton "Ajouter une compétence" -->
+                <button type="button" class="btn btn-primary mx-2 rounded-2 mt-4 mb-4 text-center">Ajouter une compétence</button>
             </div>
         </div>
     </div>
 </div>
+
     <div class="container mt-4">
         <div class="row">
             <div class="col-md-6 offset-md-3 text-center">
                 <div class="btn-group" role="group" aria-label="Actions">
                     <!-- Bouton "Mot de passe oublié" en bleu -->
-                    <button type="button" class="btn btn-primary mx-2 rounded-2">Mot de passe oublié</button>
-                    
+                     <!-- Bouton Mot de passe oublié visible à partir de la taille d'écran md (768px) -->
+                    <button type="button" class="btn btn-primary mx-2 rounded-2 d-none d-md-block">Mot de passe oublié</button>
+                    <!-- Bouton avec icône de clé visible à une taille d'écran inférieure à md (520px) -->
+                    <button type="button" class="btn btn-primary mx-2 rounded-2 d-md-none"><i class="fa-solid fa-key"></i></button>
+
                     <!-- Bouton "Modifier mes informations" en bleu -->
-                    <button type="button" class="btn btn-primary mx-2 rounded-2">Modifier mes informations</button>
+                    <button type="button" class="btn btn-primary mx-2 rounded-2 d-none d-md-block">Modifier mes informations</button>
+                    <!-- Bouton avec icône de clé visible à une taille d'écran inférieure à md (520px) -->
+                    <button type="button" class="btn btn-primary mx-2 rounded-2 d-md-none"><i class="fa-solid fa-pencil"></i></button>
+                     <!-- <i class="fa-solid fa-pencil"></i> -->
                     
                     <!-- Bouton "Archiver mon compte" en orange -->
-                    <button type="button" class="btn btn-outline-info mx-2 rounded-2">Archiver mon compte</button>
+                    <button type="button" class="btn btn-outline-info mx-2 rounded-2 d-none d-md-block">Archiver mon compte</button>
+                    <!-- Bouton avec icône de clé visible à une taille d'écran inférieure à md (520px) -->
+                    <button type="button" class="btn btn-outline-info mx-2 rounded-2 d-md-none"><i class="fa-solid fa-folder-open"></i></button>
+                    <!-- <i class="fa-solid fa-folder-open"></i> -->
                 </div>
             </div>
         </div>
