@@ -1,0 +1,77 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}
+Bienvenue
+{% endblock %}
+
+{% block PageTitle %}
+{# Bonjour {{ responsable.prenom }} #}
+<div><h2>Bonjour</h2></div>
+{% endblock %}
+
+{% block body %}
+
+<div class=" mb-4  border-0">
+        <div class="container custom-container shadow">
+            <!-- Avatar -->
+            <div class="text-center">
+                <img src="{{ asset('img/logo.jpg') }}" alt="Avatar" class="img-fluid rounded-circle" style="width: 150px;">
+            </div>
+
+            <!-- Nom et Prenom -->
+            <div class="text-center mt-3">
+                <h5><strong>NOM Prenom</strong></h5>
+            </div>
+
+            <!-- Email -->
+            <div class="text-center mt-1">
+                <p style="margin: 0">Email@example.com</p>
+            </div>
+
+            <!-- Numero de Tel -->
+            <div class="text-center mb-1">
+                <p>Numéro de téléphone</p>
+            </div>
+
+            <!-- Rôle -->
+            <div class="text-center mt-3">
+                <p  style="margin: 0"><strong>Rôle :</strong></p>
+            </div>
+
+            <div class="text-center mt-1">
+                <p style="margin-bottom: 1rem; margin-top: 0"><strong>Etât du compte :</strong></p>
+            </div>
+<div class="container">
+    <div class="row">
+        <div class="col-6 offset-3 text-center">
+            <div class="bckgndclr-1">
+                <ul class="list-group list-group-horizontal d-flex mx-2 align-items-center">
+                    <li class="list-group-item list-group-item-light flex-fill text-center text-black mt-2 mb-2 border border-0">Travaux publics</li>
+                    <li class="list-group-item list-group-item-light flex-fill text-center text-black mt-2 mb-2 border border-0">Avancé</li>
+                    <li class="list-group-item list-group-item-light flex-fill text-center mt-2 mb-2 p-1 border border-0" ><a class="btn btn-primary" style="--bs-btn-padding-y: .39rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: 0.75rem;" href="#" role="button">Modifier</a></li>
+                    <li class="list-group-item list-group-item-light flex-fill text-center mt-2 mb-2 p-1 border border-0"><button class="btn btn-outline-info" style="--bs-btn-padding-y: .39rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: 0.75rem;" type="submit">Supprimer</button></li>
+                </ul>
+                <button type="button" class="btn btn-primary mx-2 rounded-2 mt-4 mb-4">Ajouter une compétence</button>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 text-center">
+                <div class="btn-group" role="group" aria-label="Actions">
+                    <!-- Bouton "Mot de passe oublié" en bleu -->
+                    <button type="button" class="btn btn-primary mx-2 rounded-2">Mot de passe oublié</button>
+                    
+                    <!-- Bouton "Modifier mes informations" en bleu -->
+                    <button type="button" class="btn btn-primary mx-2 rounded-2">Modifier mes informations</button>
+                    
+                    <!-- Bouton "Archiver mon compte" en orange -->
+                    <button type="button" class="btn btn-outline-info mx-2 rounded-2">Archiver mon compte</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

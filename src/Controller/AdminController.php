@@ -13,4 +13,9 @@ class AdminController extends AbstractController
     {
         return $this->render('admin/index.html.twig');
     }
+    #[Route('/admin/profil', name: 'app_admin')]
+    public function profil(): Response
+    {
+        return $this->render('admin/profil.html.twig');
+    }
 }

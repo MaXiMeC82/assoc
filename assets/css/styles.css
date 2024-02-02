@@ -95,6 +95,17 @@
   background-color: #EBF4FE;
 }
 
+.bckgndclr-1 {
+  background-color: #dee2e6;
+  border-radius: 3px;
+}
+
+.custom-container {
+  background-color: #ffffff; /* Couleur de fond blanche */
+  padding: 20px; /* Ajoutez un peu de rembourrage pour l'espace intérieur */
+  border-radius: 10px; /* Optionnel : Ajoutez une bordure arrondie au conteneur */
+}
+
 body {
   margin: 0;
   font-family: var(--bs-body-font-family);
