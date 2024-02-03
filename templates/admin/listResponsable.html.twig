@@ -1,0 +1,48 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Liste des Responsables{% endblock %}
+
+{% block body %}
+
+
+<div class=" mb-4 mt-4  border-0">
+    <div class="container custom-container shadow">
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12 col-md-6 offset-md-3 text-center">
+                <div class="bckgndclr rounded">
+                <ul class="list-group list-group-horizontal d-flex mx-2 align-items-center">
+                    <li class="list-group-item list-group-item-light flex-fill text-center text-black border border-0 mt-2 mb-1">Prenom</li>
+                    <li class="list-group-item list-group-item-light flex-fill text-center text-black border border-0 mt-2 mb-1">Nom</li>
+                    <li class="list-group-item list-group-item-light flex-fill text-center text-black border border-0 mt-2 mb-1">Mail</li>
+                    <li class="list-group-item list-group-item-light flex-fill text-center text-black border border-0 mt-2 mb-1">N°tel</li>
+                    <li class="list-group-item list-group-item-light flex-fill text-center mt-2 mb-1 p-1 border border-0"><button class="btn btn-outline-secondary" style="--bs-btn-padding-y: .39rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: 0.75rem;" type="submit">Afficher</button></li>
+                </ul>
+                    <!-- Bouton "Ajouter une compétence" -->
+                    <button type="button" class="btn btn-primary mx-2 rounded-2 mt-4 mb-4 text-center">Ajouter</button>
+                    
+                </div>
+                <nav aria-label="" class="mt-4">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                        <a class="page-link">Précédent</a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                        <a class="page-link" href="#">Suivant</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>  
+    </div>
+</div>
+   
+{% endblock %}
+
+{% block PageTitle %}
+Liste des résponsables
+{% endblock %}
