@@ -8,6 +8,7 @@
         <meta name="author" content="" />
         <link href="{{ asset('/css/styles.css') }}" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <title>
         {% block title %}
             Bienvenue
@@ -15,9 +16,9 @@
         </title>
     </head>
     <body>
-        <nav class="sb-topnav navbar navbar-expand navbar-light bg-light">
+        <nav class="sb-topnav navbar navbar-expand navbar-light bckgndclr">
             <!-- Navbar Brand-->
-                <a class="navbar-brand ps-3" href="{{ path('app_admin_profil') }}">
+                <a class="navbar-brand ps-3" href="{{ path('app_admin') }}">
                     <img src="{{ asset('img/logo.jpg') }}" alt="Logo" style="max-width: 100%; height: auto; max-height: 50px;">
                 </a>    
             <!-- Sidebar Toggle-->
@@ -45,7 +46,7 @@
         </nav>
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
-                <nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion">
+                <nav class="sb-sidenav accordion bckgndclr" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">   
                             <div class="sb-sidenav-menu-heading">Dashboard</div>
@@ -64,11 +65,11 @@
                                         <div class="sb-nav-link-icon"><i class="fa-solid fa-user fa-2x text-primary"></i></div>
                                             Stagiaires
                                     </a>
-                                    <a class="nav-link" href="index.html">
+                                    <a class="nav-link" href="{{ path('app_admin_reunion') }}">
                                         <div class="sb-nav-link-icon"><i class="fa-solid fa-calendar-days fa-2x text-primary"></i></div>
                                             Réunions
                                     </a>
-                                    <a class="nav-link" href="index.html">
+                                    <a class="nav-link" href="{{ path('app_admin_equipe') }}">
                                         <div class="sb-nav-link-icon"><i class="fa-solid fa-people-group fa-lg text-primary"></i></div>
                                             Equipes
                                     </a>
@@ -108,21 +109,17 @@
                 </nav>
             </div>
             <div id="layoutSidenav_content">
-                <main class="bckgndclr" style="height: 87vh">
+                <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4 text-center">
-                                {% block PageTitle %}
-                                    <h2>Template (H1)</h2>
-                                {% endblock %}
-                        </h1>
+                        <h1 class="mt-4 text-center"> {% block PageTitle %} {% endblock %}</h1>
+                        <div class="card mb-4 border-0">
+                            <div class="card-body">
                                 {% block body %}
-                                    Template Body
+                                
                                 {% endblock %}
                             </div>
                         </div>
-                       
                 </main>
-            
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
@@ -138,6 +135,15 @@
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="{{ asset('/js/scripts.js') }}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="{{ asset('/demo/chart-area-demo.js') }}"></script>
+        <script src="{{ asset('/demo/chart-bar-demo.js') }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+        <script src="{{ asset('js/datatables-simple-demo.js') }}"></script>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     </body>
 </html>
 

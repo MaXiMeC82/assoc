@@ -11,8 +11,6 @@ Bonjour
 
 {% block body %}
 
-<div class=" mb-4 mt-4 border-0">
-        <div class="container custom-container shadow">
             <!-- Avatar -->
             <div class="text-center">
                 <img src="{{ asset('img/logo.jpg') }}" alt="Avatar" class="img-fluid rounded-circle" style="width: 150px;">
@@ -39,22 +37,37 @@ Bonjour
             <div class="text-center mt-1">
                 <p style="margin-bottom: 1rem; margin-top: 0"><strong>Etât du compte :</strong></p>
             </div>
-<div class="container">
-    <div class="row">
-        <div class="col-12 col-md-6 offset-md-3 text-center">
-            <div class="bckgndclr rounded">
-                <ul class="list-group list-group-horizontal d-flex mx-2 align-items-center">
-                    <li class="list-group-item list-group-item-light flex-fill text-center text-black mt-2 mb-2 border border-0">Travaux publics</li>
-                    {# <li class="list-group-item list-group-item-light flex-fill text-center text-black mt-2 mb-2 border border-0">Avancé</li> #}
-                    <li class="list-group-item list-group-item-light flex-fill text-center mt-2 mb-2 p-1 border border-0" ><a class="btn btn-primary" style="--bs-btn-padding-y: .39rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: 0.75rem;" href="#" role="button">Modifier</a></li>
-                    <li class="list-group-item list-group-item-light flex-fill text-center mt-2 mb-2 p-1 border border-0"><button class="btn btn-outline-info" style="--bs-btn-padding-y: .39rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: 0.75rem;" type="submit">Supprimer</button></li>
-                </ul>
-                <!-- Bouton "Ajouter une compétence" -->
-                <button type="button" class="btn btn-primary mx-2 rounded-2 mt-4 mb-4 text-center">Ajouter une compétence</button>
-            </div>
-        </div>
+
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="table-responsive">
+        <table class="table table-borderless rounded">
+          <thead>
+            <tr>
+              <th class="text-center">Secteur:</th>
+              <th class="text-center"></th>
+              <th class="text-center"></th>
+            </tr>
+          </thead>
+            <tr class="bckgndclr">
+              <td class="text-center">UBEDA</td>
+              <td class="text-center"><button type="button" class="btn btn-primary btn-sm">Editer</button></td>
+              <td class="text-center"><button type="button" class="btn btn-outline-info btn-sm">Supprimer</button></td>
+            </tr>
+        </table>
+      </div>
+      <div class="text-center mt-4">
+        <!-- Bouton pour ouvrir le modal -->
+        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="">
+          Ajouter
+        </button>
+      </div>
     </div>
+  </div>
 </div>
+
     <div class="container mt-4">
         <div class="row">
             <div class="col-md-6 offset-md-3 text-center">

@@ -1,0 +1,186 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}
+Bienvenue
+{% endblock %}
+
+{% block PageTitle %}
+{# Bonjour {{ responsable.prenom }} #}
+Détails de l'équipe
+{% endblock %}
+
+{% block body %}
+<div class="container mt-3">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <h6 class="card-title mb-3" id="dateDebut">Date de début :</h6>
+              <h6 class="card-title mb-3" id="dateFin">Date de fin :</h6>
+              <h6 class="card-title mb-3" id="dateReunion">Date de la Réunion :</h6>
+              <h6 class="card-title mb-3" id="responsable">Responsable :</h6>
+              <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modifierModal">
+                Modifier
+              </button>
+            </div>
+            <div class="col-md-6 mt-4 mt-md-0 text-center bckgndclr rounded">
+              <div>
+                <h5 class="card-title mb-3 mt-3 text-decoration-underline" id="secteurTitre">Secteur de l'équipe</h5>
+                <p class="mt-4" id="secteur">Travaux public</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Modifier -->
+<div class="modal fade" id="modifierModal" tabindex="-1" role="dialog" aria-labelledby="modifierModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modifierModalLabel">Modifier les données</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Formulaire pour modifier les données -->
+        <form id="modifierForm">
+          <div class="form-group">
+            <label for="nouvelleDateDebut"> Date de début :</label>
+            <input type="text" class="form-control" id="nouvelleDateDebut" placeholder="Entrez la nouvelle date de début">
+          </div>
+          <div class="form-group">
+            <label for="nouvelleDateFin"> Date de fin :</label>
+            <input type="text" class="form-control" id="nouvelleDateFin" placeholder="Entrez la nouvelle date de fin">
+          </div>
+          <div class="form-group">
+            <label for="nouvelleDateReunion"> Date de la Réunion :</label>
+            <input type="text" class="form-control" id="nouvelleDateReunion" placeholder="Entrez la nouvelle date de la réunion">
+          </div>
+          <div class="form-group">
+            <label for="nouveauResponsable"> Responsable :</label>
+            <input type="text" class="form-control" id="nouveauResponsable" placeholder="Entrez le nouveau responsable">
+          </div>
+          <div class="form-group">
+            <label for="nouveauSecteur"> Secteur de l'équipe :</label>
+            <input type="text" class="form-control" id="nouveauSecteur" placeholder="Entrez le nouveau secteur">
+          </div>
+          <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="table-responsive">
+        <table class="table table-borderless rounded">
+          <thead>
+            <tr>
+              <th class="text-center">Nom:</th>
+              <th class="text-center">Prenom:</th>
+              <th class="text-center d-none d-md-table-cell">Statut:</th>
+              <th class="text-center d-none d-md-table-cell">Date d'entrée:</th>
+              <th class="text-center"></th>
+              <th class="text-center"></th>
+            </tr>
+          </thead>
+            <tr class="bckgndclr">
+              <td class="text-center">UBEDA</td>
+              <td class="text-center">kevin</td>
+              <td class="text-center d-none d-md-table-cell">Admin</td>
+              <td class="text-center d-none d-md-table-cell">29/01/2024</td>
+              <td class="text-center"><button type="button" class="btn btn-primary btn-sm">Editer</button></td>
+              <td class="text-center"><button type="button" class="btn btn-outline-info btn-sm">Supprimer</button></td>
+            </tr>
+        </table>
+      </div>
+      <div class="text-center mt-4">
+        <!-- Bouton pour ouvrir le modal -->
+        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#ajouterModal">
+          Ajouter
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Nom</th>
+              <th>Prenom</th>
+              <th>Statut de présence</th>
+              <!-- Ajoutez d'autres colonnes selon vos besoins -->
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Ajoutez les lignes ici -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="mt-4">
+        <h6 style="margin-left:10px" class="fw-bold">Commentaire du résponsable</h6>
+        <textarea class="form-control" rows="4" placeholder="Votre texte ici..."></textarea>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Ajouter -->
+<div class="modal fade" id="ajouterModal" tabindex="-1" role="dialog" aria-labelledby="ajouterModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="ajouterModalLabel">Ajouter un membre à l'équipe</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Sélecteur pour les stagiaires -->
+        <div class="form-group">
+          <label for="stagiaireSelect">Sélectionnez un stagiaire :</label>
+          <select class="form-control" id="stagiaireSelect">
+            <!-- Ajoutez les options dynamiquement -->
+          </select>
+        </div>
+        <!-- Sélecteur pour les responsables -->
+        <div class="form-group">
+          <label for="responsableSelect">Sélectionnez un responsable :</label>
+          <select class="form-control" id="responsableSelect">
+            <!-- Ajoutez les options dynamiquement -->
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Ajouter</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

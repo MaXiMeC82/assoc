@@ -28,4 +28,14 @@ class AdminController extends AbstractController
     {
         return $this->render('admin/listStagiaire.html.twig');
     }
+    #[Route('/admin/reunion', name: 'app_admin_reunion')]
+    public function reunionList(): Response
+    {
+        return $this->render('admin/listReunion.html.twig');
+    }
+    #[Route('/admin/equipe', name: 'app_admin_equipe')]
+    public function equipeList(): Response
+    {
+        return $this->render('admin/listEquipe.html.twig');
+    }
 }
