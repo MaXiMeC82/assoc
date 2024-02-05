@@ -6,7 +6,7 @@
 
 
 
-<div class="container mt-5">
+<div class="container mt-3">
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="table-responsive">
@@ -19,12 +19,14 @@
               <th class="text-center">Mail</th>
             </tr>
           </thead>
+          {% for responsable in responsables %}
             <tr class="bckgndclr">
-              <td class="text-center">test</td>
-              <td class="text-center">test</td>
-              <td class="text-center">test@test.com</td>
-              <td class="text-center"><button class="btn btn-outline-secondary btn-sm" type="submit">Afficher</button></td>
+              <td class="text-center">{{ responsable.nom }}</td>
+              <td class="text-center">{{ responsable.prenom }}</td>
+              <td class="text-center">{{ responsable.email }}</td>
+              <td class="text-center"><a class="btn btn-outline-info btn-sm" href="{{ path('app_admin_profil', {'id': responsable.id}) }}" role="button">Afficher</a></td>
             </tr>
+            {% endfor %}
         </table>
       </div>
       <div class="text-center mt-4">
