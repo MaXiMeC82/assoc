@@ -6,20 +6,33 @@
 
 
 
-    <div class="container mt-4">
-        <div class="row">
-            <div class="col-12 col-md-6 offset-md-3 text-center">
-                <div class="bckgndclr rounded">
-                <ul class="list-group list-group-horizontal d-flex mx-2 align-items-center">
-                    <li class="list-group-item list-group-item-light flex-fill text-center text-black border border-0 mt-2 mb-1">Prénom</li>
-                    <li class="list-group-item list-group-item-light flex-fill text-center text-black border border-0 mt-2 mb-1">Nom</li>
-                    <li class="list-group-item list-group-item-light flex-fill text-center text-black border border-0 mt-2 mb-1">Mail</li>
-                    <li class="list-group-item list-group-item-light flex-fill text-center mt-2 mb-1 p-1 border border-0"><button class="btn btn-outline-secondary" style="--bs-btn-padding-y: .39rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: 0.75rem;" type="submit">Afficher</button></li>
-                </ul>
-                    <!-- Bouton "Ajouter une compétence" -->
-                    <button type="button" class="btn btn-primary mx-2 rounded-2 mt-4 mb-4 text-center">Ajouter</button>
-                    
-                </div>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="table-responsive">
+        <table class="table table-borderless rounded">
+          <thead>
+            <tr>
+              <th class="text-center">Nom:</th>
+              <th class="text-center">Prénom</th>
+              <th class="text-center">Mail</th>
+              <th class="text-center">Mail</th>
+            </tr>
+          </thead>
+            <tr class="bckgndclr">
+              <td class="text-center">test</td>
+              <td class="text-center">test</td>
+              <td class="text-center">test@test.com</td>
+              <td class="text-center"><button class="btn btn-outline-secondary btn-sm" type="submit">Afficher</button></td>
+            </tr>
+        </table>
+      </div>
+      <div class="text-center mt-4">
+        <!-- Bouton pour ouvrir le modal -->
+        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="">
+          Ajouter
+        </button>
+      </div>
                 <nav aria-label="" class="mt-4">
                     <ul class="pagination justify-content-center">
                         <li class="page-item disabled">
@@ -41,5 +54,5 @@
 {% endblock %}
 
 {% block PageTitle %}
-Liste des résponsables
+Gestion des résponsables
 {% endblock %}
