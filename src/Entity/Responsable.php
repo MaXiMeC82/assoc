@@ -22,6 +22,16 @@ class Responsable
     #[ORM\Column(length: 255)]
     private ?string $email = null;
 
+    #[ORM\Column(length: 20, nullable: true)]
+    private ?string $numDeTelephone = null;
+
+    #[ORM\Column(type: 'boolean')]
+    private bool $isValidated = false;
+
+    #[ORM\Column(type: 'boolean')]
+    private bool $isArchived = false;
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -62,4 +72,40 @@ class Responsable
 
         return $this;
     }
+    public function getNumDeTelephone(): ?string
+{
+    return $this->numDeTelephone;
+}
+
+public function setNumDeTelephone(?string $numDeTelephone): static
+{
+    $this->numDeTelephone = $numDeTelephone;
+
+    return $this;
+}
+
+public function getIsValidated(): ?bool
+{
+    return $this->isValidated;
+}
+
+public function setIsValidated(bool $isValidated): static
+{
+    $this->isValidated = $isValidated;
+
+    return $this;
+}
+
+public function getIsArchived(): ?bool
+{
+    return $this->isArchived;
+}
+
+public function setIsArchived(bool $isArchived): static
+{
+    $this->isArchived = $isArchived;
+
+    return $this;
+}
+
 }
