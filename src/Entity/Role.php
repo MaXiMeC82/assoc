@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\RoleRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: RoleRepository::class)]
@@ -21,6 +23,10 @@ class Role
     {
         return $this->id;
     }
+    public function setId(int $id): ?int
+    {
+        return $this->id = $id;
+    }
 
     public function getResponsabilite(): ?string
     {
@@ -33,4 +39,5 @@ class Role
 
         return $this;
     }
+
 }

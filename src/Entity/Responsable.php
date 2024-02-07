@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ResponsableRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ResponsableRepository::class)]
@@ -30,6 +32,9 @@ class Responsable
 
     #[ORM\Column(type: 'boolean')]
     private bool $isArchived = false;
+
+    #[ORM\Column(length: 14)]
+    private ?string $responsabilite = null;
 
 
     public function getId(): ?int
@@ -73,39 +78,50 @@ class Responsable
         return $this;
     }
     public function getNumDeTelephone(): ?string
-{
-    return $this->numDeTelephone;
-}
+    {
+        return $this->numDeTelephone;
+    }
 
-public function setNumDeTelephone(?string $numDeTelephone): static
-{
-    $this->numDeTelephone = $numDeTelephone;
+    public function setNumDeTelephone(?string $numDeTelephone): static
+    {
+        $this->numDeTelephone = $numDeTelephone;
 
-    return $this;
-}
+        return $this;
+    }
 
-public function getIsValidated(): ?bool
-{
-    return $this->isValidated;
-}
+    public function getIsValidated(): ?bool
+    {
+        return $this->isValidated;
+    }
 
-public function setIsValidated(bool $isValidated): static
-{
-    $this->isValidated = $isValidated;
+    public function setIsValidated(bool $isValidated): static
+    {
+        $this->isValidated = $isValidated;
 
-    return $this;
-}
+        return $this;
+    }
 
-public function getIsArchived(): ?bool
-{
-    return $this->isArchived;
-}
+    public function getIsArchived(): ?bool
+    {
+        return $this->isArchived;
+    }
 
-public function setIsArchived(bool $isArchived): static
-{
-    $this->isArchived = $isArchived;
+    public function setIsArchived(bool $isArchived): static
+    {
+        $this->isArchived = $isArchived;
 
-    return $this;
-}
+        return $this;
+    }
 
+    public function getResponsabilite(): ?bool
+    {
+        return $this->responsabilite;
+    }
+
+    public function setResponsabilite(bool $responsabilite): static
+    {
+        $this->responsabilite = $responsabilite;
+
+        return $this;
+    }
 }

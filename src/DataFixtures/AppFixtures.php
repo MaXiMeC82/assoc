@@ -13,10 +13,17 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
 
-       // Création du rôle admin
-       $roleAdmin = new Role();
-       $roleAdmin->setResponsabilite('admin');
-       $manager->persist($roleAdmin);
+    //    // Création du rôle admin
+    //    $roleAdmin = new Role();
+    //    $roleAdmin->setResponsabilite('admin');
+    // //    $roleAdmin->setId('1');
+    //    $manager->persist($roleAdmin);
+
+    //     // Création du rôle admin
+    //     $roleResponsable = new Role();
+    //     $roleResponsable->setResponsabilite('responsable');
+    //     // $roleResponsable->setId('2');
+    //     $manager->persist($roleResponsable);
 
        // Ajout des données de test pour les responsables avec le rôle admin
        for ($i = 1; $i <= 6; $i++) {
@@ -26,8 +33,8 @@ class AppFixtures extends Fixture
            $responsable->setEmail('responsable' . $i . '@example.com');
            $responsable->setNumDeTelephone('0695' . $i . $i .'77' . '8' . $i );
            $responsable->setIsValidated(true); // définir isValidated à true
-           $responsable->setIsArchived(true); // définir isArchived à true
-        //    $responsable->addResponsabilite($roleAdmin); // attribuer le rôle admin
+           $responsable->setIsArchived(false); // définir isArchived à true
+        //    $responsable->setResponsabilite('admin'); // attribuer le rôle admin
 
             $manager->persist($responsable);
         }
