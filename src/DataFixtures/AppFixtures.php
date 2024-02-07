@@ -4,7 +4,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Responsable;
-use App\Entity\Role;
+use App\Entity\Stagiaire;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
@@ -26,7 +26,7 @@ class AppFixtures extends Fixture
     //     $manager->persist($roleResponsable);
 
        // Ajout des données de test pour les responsables avec le rôle admin
-       for ($i = 1; $i <= 6; $i++) {
+       for ($i = 1; $i <= 10; $i++) {
            $responsable = new Responsable();
            $responsable->setNom('Nom' . $i);
            $responsable->setPrenom('Prenom' . $i);
@@ -38,6 +38,19 @@ class AppFixtures extends Fixture
 
             $manager->persist($responsable);
         }
+
+        for ($i = 1; $i <= 10; $i++) {
+            $stagiaire = new Stagiaire();
+            $stagiaire->setNom('Nom' . $i);
+            $stagiaire->setPrenom('Prenom' . $i);
+            $stagiaire->setEmail('stagiaire' . $i . '@example.com');
+            $stagiaire->setNumDeTelephone('0695' . $i . $i .'77' . '8' . $i );
+            $stagiaire->setIsValidated(true); // définir isValidated à true
+            $stagiaire->setIsArchived(false); // définir isArchived à true
+         //    $stagiaire->setResponsabilite('admin'); // attribuer le rôle admin
+ 
+             $manager->persist($stagiaire);
+         }
 
         $manager->flush();
     }

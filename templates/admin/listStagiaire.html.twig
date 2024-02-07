@@ -6,7 +6,7 @@
 
 
 
-<div class="container mt-5">
+<div class="container mt-2">
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="table-responsive">
@@ -15,16 +15,18 @@
             <tr>
               <th class="text-center">Nom:</th>
               <th class="text-center">Prénom</th>
-              <th class="text-center">Mail</th>
-              <th class="text-center">Mail</th>
+              <th class="text-center d-none d-md-table-cell">Mail</th>
+              <th class="text-center">Afficher</th>
             </tr>
           </thead>
+          {% for stagiaire in stagiaire %}
             <tr class="bckgndclr">
-              <td class="text-center">test</td>
-              <td class="text-center">test</td>
-              <td class="text-center">test@test.com</td>
-              <td class="text-center"><button class="btn btn-outline-secondary btn-sm" type="submit">Afficher</button></td>
+              <td class="text-center">{{ stagiaire.nom }}</td>
+              <td class="text-center">{{ stagiaire.prenom }}</td>
+              <td class="text-center d-none d-md-table-cell">{{ stagiaire.email }}</td>
+              <td class="text-center"><a class="btn btn-outline-info btn-sm" href="{{ path('app_admin_profil', {'id': stagiaire.id}) }}" role="button">Afficher</a></td>
             </tr>
+            {% endfor %}
         </table>
       </div>
       <div class="text-center mt-4">
@@ -33,20 +35,22 @@
           Ajouter
         </button>
       </div>
-                <nav aria-label="" class="mt-4">
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item disabled">
-                        <a class="page-link">Précédent</a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                        <a class="page-link" href="#">Suivant</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
+      {% if isPaginated %}
+      <nav aria-label="" class="mt-4">
+        <ul class="pagination justify-content-center">
+          {% if page != 1 %}
+            <li class="page-item">
+              <a class="page-link" href="{{ path('app_admin_stagiaire', {page: page - 1, nbre: nbre})}}">Précédent</a></li>
+          {% endif %}
+          {% for i in range(1, nbrePage) %}
+            <li class="page-item"><a class="page-link" href="{{ path('app_admin_stagiaire', {page: i, nbre: nbre})}}">{{i}}</a></li>
+          {% endfor %}
+          {% if page != nbrePage %}
+          <li class="page-item"><a class="page-link" href="{{ path('app_admin_stagiaire', {page: page + 1, nbre: nbre})}}">Suivant</a></li>
+        {% endif %}
+        </ul>
+      </nav>
+      {% endif %}
         </div>  
     </div>
 </div>

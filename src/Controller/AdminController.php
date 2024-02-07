@@ -9,23 +9,28 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\ResponsableRepository;
 use App\Service\ResponsableManagerService;
+use App\Service\StagiaireManagerService;
 use App\Service\ResponsablePaginationService;
+use App\Service\StagiairePaginationService;
 
 
 
 class AdminController extends AbstractController
 {
     private $responsablePaginationService;
+    private $stagiairePaginationService;
 
-    public function __construct(ResponsablePaginationService $responsablePaginationService)
+    public function __construct(ResponsablePaginationService $responsablePaginationService, StagiairePaginationService $stagiairePaginationService)
     {
         $this->responsablePaginationService = $responsablePaginationService;
+        $this->stagiairePaginationService = $stagiairePaginationService;
     }
+
 
     #[Route('/admin/', name: 'app_admin')]
     public function index(): Response
     {
-        return $this->render('admin/index.html.twig');
+        return $this->render('admin/connexion.html.twig');
     }
 
     #[Route('/admin/monprofil', name: 'app_admin_profil_perso')]
@@ -37,7 +42,7 @@ class AdminController extends AbstractController
     public function profil(ResponsableManagerService $responsableService, $id): Response
     {
         $responsables = $responsableService->findResponsableById($id);
-        
+
         if (!$responsables) {
             return $this->redirectToRoute('app_admin_responsable');
         }
@@ -49,9 +54,9 @@ class AdminController extends AbstractController
     {
         $nbResponsable = $this->responsablePaginationService->countResponsables();
         $nbrePage = ceil($nbResponsable / $nbre);
-    
+
         $responsables = $this->responsablePaginationService->getResponsables($page, $nbre);
-        
+
         return $this->render('admin/listResponsable.html.twig', [
             'responsables' => $responsables,
             'isPaginated' => true,
@@ -61,11 +66,23 @@ class AdminController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/stagiaire', name: 'app_admin_stagiaire')]
-    public function stagiaireList(): Response
+    #[Route('/admin/stagiaire/{page?1}/{nbre?8}', name: 'app_admin_stagiaire')]
+    public function stagiaireList($page, $nbre): Response
     {
-        return $this->render('admin/listStagiaire.html.twig');
+        $nbStagiaire = $this->stagiairePaginationService->countStagiaire();
+        $nbrePage = ceil($nbStagiaire / $nbre);
+
+        $stagiaire = $this->stagiairePaginationService->getStagiaire($page, $nbre);
+
+        return $this->render('admin/listStagiaire.html.twig', [
+            'stagiaire' => $stagiaire,
+            'isPaginated' => true,
+            'nbrePage' => $nbrePage,
+            'page' => $page,
+            'nbre' => $nbre
+        ]);
     }
+
     #[Route('/admin/reunion', name: 'app_admin_reunion')]
     public function reunionList(): Response
     {
