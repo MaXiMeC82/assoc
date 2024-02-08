@@ -18,7 +18,7 @@ class Equipe
     private ?string $nom = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $date_debut = null;
+    private ?\DateTimeInterface $dater = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $date_fin = null;
@@ -40,14 +40,14 @@ class Equipe
         return $this;
     }
 
-    public function getDateDebut(): ?\DateTimeInterface
+    public function getDater(): ?\DateTimeInterface
     {
-        return $this->date_debut;
+        return $this->dater;
     }
 
-    public function setDateDebut(\DateTimeInterface $date_debut): static
+    public function setDater(\DateTimeInterface $dater): static
     {
-        $this->date_debut = $date_debut;
+        $this->dater = $dater;
 
         return $this;
     }

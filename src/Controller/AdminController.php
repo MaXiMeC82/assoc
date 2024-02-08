@@ -2,18 +2,18 @@
 
 namespace App\Controller;
 
-use App\Entity\Responsable;
-use Doctrine\Persistence\ManagerRegistry;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Repository\ResponsableRepository;
 use App\Service\ResponsableManagerService;
-use App\Service\StagiaireManagerService;
 use App\Service\ResponsablePaginationService;
+use App\Service\StagiaireManagerService;
 use App\Service\StagiairePaginationService;
 use App\Service\ReunionPaginationService;
 use App\Service\ReunionManagerService;
+use App\Service\EquipePaginationService;
+use App\Service\EquipeManagerService;
 
 
 
@@ -22,12 +22,19 @@ class AdminController extends AbstractController
     private $responsablePaginationService;
     private $stagiairePaginationService;
     private $reunionPaginationService;
+    private $equipePaginationService;
 
-    public function __construct(ResponsablePaginationService $responsablePaginationService, StagiairePaginationService $stagiairePaginationService, ReunionPaginationService $reunionPaginationService)
+    public function __construct(
+    ResponsablePaginationService $responsablePaginationService, 
+    StagiairePaginationService $stagiairePaginationService, 
+    ReunionPaginationService $reunionPaginationService,
+    EquipePaginationService $equipePaginationService)
+
     {
         $this->responsablePaginationService = $responsablePaginationService;
         $this->stagiairePaginationService = $stagiairePaginationService;
         $this->reunionPaginationService = $reunionPaginationService;
+        $this->equipePaginationService = $equipePaginationService;
     }
 
 
@@ -104,10 +111,10 @@ class AdminController extends AbstractController
         $nbReunion = $this->reunionPaginationService->countReunion();
         $nbrePage = ceil($nbReunion / $nbre);
 
-        $reunion = $this->reunionPaginationService->getReunion($page, $nbre);
+        $reunions = $this->reunionPaginationService->getReunion($page, $nbre);
 
         return $this->render('admin/listReunion.html.twig', [
-            'reunion' => $reunion,
+            'reunions' => $reunions,
             'isPaginated' => true,
             'nbrePage' => $nbrePage,
             'page' => $page,
@@ -115,9 +122,20 @@ class AdminController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/equipe', name: 'app_admin_equipe')]
-    public function equipeList(): Response
+    #[Route('/admin/equipe/{page?1}/{nbre?8}', name: 'app_admin_equipe')]
+    public function equipeList($page, $nbre): Response
     {
-        return $this->render('admin/listEquipe.html.twig');
+        $nbEquipe = $this->equipePaginationService->countEquipe();
+        $nbrePage = ceil($nbEquipe / $nbre);
+
+        $equipes = $this->equipePaginationService->getEquipe($page, $nbre);
+
+        return $this->render('admin/listEquipe.html.twig', [
+            'equipes' => $equipes,
+            'isPaginated' => true,
+            'nbrePage' => $nbrePage,
+            'page' => $page,
+            'nbre' => $nbre
+        ]);
     }
 }

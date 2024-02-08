@@ -15,7 +15,7 @@ class Reunion
     private ?int $id = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $date_de_la_reunion = null;
+    private ?\DateTimeInterface $dater = null;
 
     #[ORM\Column(length: 255)]
     private ?string $lieu = null;
@@ -28,14 +28,14 @@ class Reunion
         return $this->id;
     }
 
-    public function getDateDeLaReunion(): ?\DateTimeInterface
+    public function getDater(): ?\DateTimeInterface
     {
-        return $this->date_de_la_reunion;
+        return $this->dater;
     }
 
-    public function setDateDeLaReunion(\DateTimeInterface $date_de_la_reunion): static
+    public function setDater(\DateTimeInterface $dater): static
     {
-        $this->date_de_la_reunion = $date_de_la_reunion;
+        $this->dater = $dater;
 
         return $this;
     }
