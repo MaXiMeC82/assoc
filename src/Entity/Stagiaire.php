@@ -34,7 +34,7 @@ class Stagiaire
     private ?string $url_du_cv = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $date_du_stage = null;
+    private ?\DateTimeInterface $datestage  = null;
 
     #[ORM\Column(nullable: true)]
     private ?bool $is_validated = null;
@@ -121,12 +121,12 @@ class Stagiaire
 
     public function getDateDuStage(): ?\DateTimeInterface
     {
-        return $this->date_du_stage;
+        return $this->datestage ;
     }
 
-    public function setDateDuStage(?\DateTimeInterface $date_du_stage): static
+    public function setDateDuStage(?\DateTimeInterface $datestage ): static
     {
-        $this->date_du_stage = $date_du_stage;
+        $this->datestage  = $datestage ;
 
         return $this;
     }

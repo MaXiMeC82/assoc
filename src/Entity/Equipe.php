@@ -21,7 +21,7 @@ class Equipe
     private ?\DateTimeInterface $dater = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $date_fin = null;
+    private ?\DateTimeInterface $datefin = null;
 
     public function getId(): ?int
     {
@@ -54,12 +54,12 @@ class Equipe
 
     public function getDateFin(): ?\DateTimeInterface
     {
-        return $this->date_fin;
+        return $this->datefin;
     }
 
-    public function setDateFin(?\DateTimeInterface $date_fin): static
+    public function setDateFin(?\DateTimeInterface $datefin): static
     {
-        $this->date_fin = $date_fin;
+        $this->datefin = $datefin;
 
         return $this;
     }

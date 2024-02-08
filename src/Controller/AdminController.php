@@ -16,7 +16,6 @@ use App\Service\EquipePaginationService;
 use App\Service\EquipeManagerService;
 
 
-
 class AdminController extends AbstractController
 {
     private $responsablePaginationService;
@@ -25,12 +24,11 @@ class AdminController extends AbstractController
     private $equipePaginationService;
 
     public function __construct(
-    ResponsablePaginationService $responsablePaginationService, 
-    StagiairePaginationService $stagiairePaginationService, 
-    ReunionPaginationService $reunionPaginationService,
-    EquipePaginationService $equipePaginationService)
-
-    {
+        ResponsablePaginationService $responsablePaginationService,
+        StagiairePaginationService $stagiairePaginationService,
+        ReunionPaginationService $reunionPaginationService,
+        EquipePaginationService $equipePaginationService
+    ) {
         $this->responsablePaginationService = $responsablePaginationService;
         $this->stagiairePaginationService = $stagiairePaginationService;
         $this->reunionPaginationService = $reunionPaginationService;
@@ -70,6 +68,8 @@ class AdminController extends AbstractController
         }
         return $this->render('admin/profilS.html.twig', ['stagiaire' => $stagiaire]);
     }
+
+
 
     #[Route('/admin/responsable/{page?1}/{nbre?8}', name: 'app_admin_responsable')]
     public function responsableList($page, $nbre): Response
