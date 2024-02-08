@@ -12,6 +12,8 @@ use App\Service\ResponsableManagerService;
 use App\Service\StagiaireManagerService;
 use App\Service\ResponsablePaginationService;
 use App\Service\StagiairePaginationService;
+use App\Service\ReunionPaginationService;
+use App\Service\ReunionManagerService;
 
 
 
@@ -19,11 +21,13 @@ class AdminController extends AbstractController
 {
     private $responsablePaginationService;
     private $stagiairePaginationService;
+    private $reunionPaginationService;
 
-    public function __construct(ResponsablePaginationService $responsablePaginationService, StagiairePaginationService $stagiairePaginationService)
+    public function __construct(ResponsablePaginationService $responsablePaginationService, StagiairePaginationService $stagiairePaginationService, ReunionPaginationService $reunionPaginationService)
     {
         $this->responsablePaginationService = $responsablePaginationService;
         $this->stagiairePaginationService = $stagiairePaginationService;
+        $this->reunionPaginationService = $reunionPaginationService;
     }
 
 
@@ -94,11 +98,23 @@ class AdminController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/reunion', name: 'app_admin_reunion')]
-    public function reunionList(): Response
+    #[Route('/admin/reunion/{page?1}/{nbre?8}', name: 'app_admin_reunion')]
+    public function reunionList($page, $nbre): Response
     {
-        return $this->render('admin/listReunion.html.twig');
+        $nbReunion = $this->reunionPaginationService->countReunion();
+        $nbrePage = ceil($nbReunion / $nbre);
+
+        $reunion = $this->reunionPaginationService->getReunion($page, $nbre);
+
+        return $this->render('admin/listReunion.html.twig', [
+            'reunion' => $reunion,
+            'isPaginated' => true,
+            'nbrePage' => $nbrePage,
+            'page' => $page,
+            'nbre' => $nbre
+        ]);
     }
+
     #[Route('/admin/equipe', name: 'app_admin_equipe')]
     public function equipeList(): Response
     {

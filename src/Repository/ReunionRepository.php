@@ -20,6 +20,13 @@ class ReunionRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Reunion::class);
     }
+    public function countReunion(): int
+    {
+        return $this->createQueryBuilder('r')
+            ->select('COUNT(r.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
 
 //    /**
 //     * @return Reunion[] Returns an array of Reunion objects
