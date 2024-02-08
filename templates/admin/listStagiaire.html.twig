@@ -24,7 +24,7 @@
               <td class="text-center">{{ stagiaire.nom }}</td>
               <td class="text-center">{{ stagiaire.prenom }}</td>
               <td class="text-center d-none d-md-table-cell">{{ stagiaire.email }}</td>
-              <td class="text-center"><a class="btn btn-outline-info btn-sm" href="{{ path('app_admin_profil', {'id': stagiaire.id}) }}" role="button">Afficher</a></td>
+              <td class="text-center"><a class="btn btn-outline-info btn-sm" href="{{ path('app_admin_profilS', {'id': stagiaire.id}) }}" role="button">Afficher</a></td>
             </tr>
             {% endfor %}
         </table>

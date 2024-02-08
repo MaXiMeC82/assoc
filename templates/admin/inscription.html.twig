@@ -16,10 +16,23 @@ Bienvenue
     <div class="card-body py-5 px-md-5">
       <div class="row d-flex justify-content-center">
         <div class="col-lg-10"> <!-- Réduction de la taille de la colonne à 10 colonnes pour centrer le contenu -->
-          <h2 class="fw-bold mb-5">Connexion</h2>
+          <h2 class="fw-bold mb-5">Inscription</h2>
           <form>
             <!-- Mise en page en grille à 2 colonnes avec des champs de saisie pour les prénoms et noms -->
             <div class="row">
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                  <input type="text" id="form3Example1" class="form-control" placeholder="Entrez votre prénom"/>
+                  <label class="form-label" for="form3Example1">Prenom</label>
+                </div>
+              </div>
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                  <input type="text" id="form3Example2" class="form-control" placeholder="Entrez votre nom"/>
+                  <label class="form-label" for="form3Example2">Nom</label>
+                </div>
+              </div>
+            </div>
             <!-- Email input -->
             <div class="form-outline mb-4">
               <input type="email" id="form3Example3" class="form-control" placeholder="Entrez votre adresse e-mail"/>
@@ -31,13 +44,15 @@ Bienvenue
               <label class="form-label" for="form3Example4">Mot de passe</label>
             </div>
             <!-- Submit button -->
-            <button type="submit" class="btn btn-primary btn-block mb-4">Se conencter</button>
+            <button type="submit" class="btn btn-primary btn-block mb-4">S'inscrire</button>
           </form>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+
 
 {% endblock %}
     

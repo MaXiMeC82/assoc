@@ -38,7 +38,7 @@ class AdminController extends AbstractController
     {
         return $this->render('admin/profilPerso.html.twig');
     }
-    #[Route('/admin/profil/{id<\d+>}', name: 'app_admin_profil')]
+    #[Route('/admin/profil/responsable/{id<\d+>}', name: 'app_admin_profil')]
     public function profil(ResponsableManagerService $responsableService, $id): Response
     {
         $responsables = $responsableService->findResponsableById($id);
@@ -47,6 +47,17 @@ class AdminController extends AbstractController
             return $this->redirectToRoute('app_admin_responsable');
         }
         return $this->render('admin/profil.html.twig', ['responsables' => $responsables]);
+    }
+
+    #[Route('/admin/profil/stagiaire/{id<\d+>}', name: 'app_admin_profilS')]
+    public function profilS(StagiaireManagerService $stagiaireService, $id): Response
+    {
+        $stagiaire = $stagiaireService->findStagiaireById($id);
+
+        if (!$stagiaire) {
+            return $this->redirectToRoute('app_admin_responsable');
+        }
+        return $this->render('admin/profilS.html.twig', ['stagiaire' => $stagiaire]);
     }
 
     #[Route('/admin/responsable/{page?1}/{nbre?8}', name: 'app_admin_responsable')]

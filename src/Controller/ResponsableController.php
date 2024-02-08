@@ -16,3 +16,4 @@ class ResponsableController extends AbstractController
         ]);
     }
 }
+
