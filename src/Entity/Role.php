@@ -25,4 +25,9 @@ class Role
 
         return $this;
     }
+
+    public function __toString(): string
+    {
+        return $this->responsabilite ?? ''; // Remplacez 'responsabilite' par la propriété que vous souhaitez afficher
+    }
 }

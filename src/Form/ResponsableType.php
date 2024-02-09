@@ -42,18 +42,25 @@ class ResponsableType extends AbstractType
             ->add('num_de_telephone')
             ->add('is_archived')
             ->add('is_validated')
+            // ->add('responsabilite', EntityType::class, [
+            //     'expanded' => false,
+            //     'class' => Role::class,
+            //     'multiple' => true,
+            //     'required' => false,
+            //     'query_builder' => function (EntityRepository $er) {
+            //         return $er->createQueryBuilder('h')
+            //             ->orderBy('h.responsabilite', 'ASC');
+            //     },
+            //     'choice_label' => 'responsabilite',
+            //     'attr' => [
+            //         'class' => 'form-select'
+            //     ]
+            // ])
             ->add('responsabilite', EntityType::class, [
-                'expanded' => false,
-                'class' => Role::class,
-                'multiple' => true,
                 'required' => false,
-                'query_builder' => function (EntityRepository $er) {
-                    return $er->createQueryBuilder('h')
-                        ->orderBy('h.responsabilite', 'ASC');
-                },
-                'choice_label' => 'responsabilite',
+                'class' => Role::class,
                 'attr' => [
-                    'class' => 'form-select'
+                    'class' => 'select2'
                 ]
             ]);
 
