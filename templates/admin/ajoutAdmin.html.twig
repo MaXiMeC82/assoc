@@ -31,11 +31,11 @@
             <div class="form-outline mb-4">
               {{ form_row(form.password) }}
             </div>
-              <div class="form-check form-switch mb-4">
-                {{ form_widget(form.responsabilite, {'attr': {'class': 'form-check-input'}}) }}
-                {{ form_label(form.responsabilite, 'Admin', {'label_attr': {'class': 'form-check-label'}}) }}
+              <div class="form-group mb-4">
+                  {{ form_label(form.responsabilite, 'Responsabilité') }}
+                  {{ form_widget(form.responsabilite, {'attr': {'class': 'form-select'}}) }}
               </div>
-            {{ form_row(form.submit) }}
+              {{ form_row(form.submit) }}
           {{ form_end(form) }}
         </div>
       </div>

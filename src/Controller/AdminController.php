@@ -162,7 +162,9 @@ class AdminController extends AbstractController
     {
         $entityManager = $doctrine->getManager();
         $responsable = new Responsable();
-        $form = $this->createForm(ResponsableType::class, $responsable);
+        $form = $this->createForm(ResponsableType::class, $responsable, [
+            'include_responsabilite' => true, // Ne pas inclure le champ 'responsabilite'
+        ]);
 
         $form->remove('is_archived');
         $form->remove('is_validated');
