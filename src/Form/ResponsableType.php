@@ -38,21 +38,27 @@ class ResponsableType extends AbstractType
             ])
             ->add('num_de_telephone')
             ->add('is_archived')
-            ->add('is_validated')
+            ->add('is_validated');
 
-            // Utiliser un interrupteur bascule pour le rôle
-            ->add('responsabilite', CheckboxType::class, [
-                'attr' => ['class' => 'form-check-input'], // Les classes CSS Bootstrap pour l'interrupteur bascule
-                'required' => false, // Le champ n'est pas obligatoire
-                'label_attr' => ['class' => 'form-check-label'], // Les classes CSS Bootstrap pour l'étiquette de l'interrupteur bascule
+        // Ajoutez le champ 'responsabilite' si l'option 'include_responsabilite' est définie à true
+        if ($options['include_responsabilite']) {
+            $builder->add('responsabilite', CheckboxType::class, [
+                'attr' => ['class' => 'form-check-input'],
+                'required' => false,
+                'label_attr' => ['class' => 'form-check-label'],
+                'label' => 'Responsabilité'
             ]);
+        }
     }
 
-    public function configureOptions(OptionsResolver $resolver): void
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
             'data_class' => Responsable::class,
-            'small_screen' => false, // Par défaut, l'écran n'est pas petit
+            'include_responsabilite' => true, // Par défaut, inclure le champ 'responsabilite'
         ]);
+
+        // Ajoutez une contrainte sur l'option 'include_responsabilite' pour qu'elle soit un booléen
+        $resolver->setAllowedTypes('include_responsabilite', 'bool');
     }
 }
