@@ -2,7 +2,10 @@
 
 namespace App\Controller;
 
-
+use App\Entity\Responsable;
+use App\Form\ResponsableType;
+use App\Entity\Stagiaire;
+use App\Form\StagiaireType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,6 +17,7 @@ use App\Service\ReunionPaginationService;
 use App\Service\ReunionManagerService;
 use App\Service\EquipePaginationService;
 use App\Service\EquipeManagerService;
+use Doctrine\Persistence\ManagerRegistry;
 
 
 class AdminController extends AbstractController
@@ -37,9 +41,21 @@ class AdminController extends AbstractController
 
 
     #[Route('/admin/', name: 'app_admin')]
-    public function index(): Response
+    public function index(ManagerRegistry $doctrine): Response
     {
-        return $this->render('admin/connexion.html.twig');
+        $entityManager = $doctrine->getManager();
+        $responsable = new Responsable();
+        $form = $this->createForm(ResponsableType::class, $responsable);
+
+        $form->remove('nom');
+        $form->remove('prenom');
+        $form->remove('num_de_telephone');
+        $form->remove('is_archived');
+        $form->remove('is_validated');
+
+        return $this->render('admin/connexion.html.twig', [
+            'form' => $form->createView()
+        ]);
     }
 
     #[Route('/admin/monprofil', name: 'app_admin_profil_perso')]
@@ -136,6 +152,38 @@ class AdminController extends AbstractController
             'nbrePage' => $nbrePage,
             'page' => $page,
             'nbre' => $nbre
+        ]);
+    }
+
+    #[Route('/admin/addEmploye', name: 'app_admin_add')]
+    public function addAdmin(ManagerRegistry $doctrine): Response
+    {
+        $entityManager = $doctrine->getManager();
+        $responsable = new Responsable();
+        $form = $this->createForm(ResponsableType::class, $responsable);
+
+        $form->remove('is_archived');
+        $form->remove('is_validated');
+        $form->remove('num_de_telephone');
+
+        return $this->render('admin/ajoutAdmin.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+    #[Route('/admin/addStagiaire', name: 'app_admin_add_stagiaire')]
+    public function addResponsable(ManagerRegistry $doctrine): Response
+    {
+        $entityManager = $doctrine->getManager();
+        $stagiaire = new Stagiaire();
+        $form = $this->createForm(StagiaireType::class, $stagiaire);
+
+        $form->remove('is_archived');
+        $form->remove('is_validated');
+        $form->remove('num_de_telephone');
+        $form->remove('datestage');
+
+        return $this->render('admin/ajoutStagiaire.html.twig', [
+            'form' => $form->createView()
         ]);
     }
 }

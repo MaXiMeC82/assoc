@@ -30,6 +30,9 @@ class Stagiaire
     #[ORM\Column(length: 50, nullable: true)]
     private ?string $type_de_presence = null;
 
+    #[ORM\Column(length: 50, nullable: true)]
+    private ?string $password = null;
+
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $url_du_cv = null;
 
@@ -107,6 +110,18 @@ class Stagiaire
         return $this;
     }
 
+    public function getPassword(): ?string
+    {
+        return $this->password;
+    }
+
+    public function setPassword(string $password): static
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
     public function getUrlDuCv(): ?string
     {
         return $this->url_du_cv;
@@ -121,12 +136,12 @@ class Stagiaire
 
     public function getDateDuStage(): ?\DateTimeInterface
     {
-        return $this->datestage ;
+        return $this->datestage;
     }
 
-    public function setDateDuStage(?\DateTimeInterface $datestage ): static
+    public function setDateDuStage(?\DateTimeInterface $datestage): static
     {
-        $this->datestage  = $datestage ;
+        $this->datestage  = $datestage;
 
         return $this;
     }

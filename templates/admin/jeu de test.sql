@@ -1,9 +1,9 @@
 CREATE TABLE role (
-    responsabilite VARCHAR(14), PRIMARY KEY (responsabilite)
+    responsabilite VARCHAR(20), PRIMARY KEY (responsabilite)
 );
 
 CREATE TABLE STAGIAIRE (
-    id INT, email VARCHAR(255) NOT NULL, mot_de_passe VARCHAR(50) NOT NULL, prenom VARCHAR(50) NOT NULL, nom VARCHAR(50) NOT NULL, num_de_telephone VARCHAR(10), type_de_presence VARCHAR(50) NOT NULL, url_du_cv VARCHAR(255), datestage DATE, is_validated BOOLEAN NOT NULL, is_archived BOOLEAN NOT NULL, PRIMARY KEY (id)
+    id INT, email VARCHAR(255) NOT NULL, password VARCHAR(50) NOT NULL, prenom VARCHAR(50) NOT NULL, nom VARCHAR(50) NOT NULL, num_de_telephone VARCHAR(10), type_de_presence VARCHAR(50) NOT NULL, url_du_cv VARCHAR(255), datestage DATE, is_validated BOOLEAN NOT NULL, is_archived BOOLEAN NOT NULL, PRIMARY KEY (id)
 );
 
 CREATE TABLE COMPETENCE ( nom VARCHAR(50), PRIMARY KEY (nom) );
@@ -17,7 +17,7 @@ CREATE TABLE REUNION (
 );
 
 CREATE TABLE RESPONSABLE (
-    id INT, email VARCHAR(255) NOT NULL, mot_de_passe VARCHAR(50), prenom VARCHAR(50) NOT NULL, nom VARCHAR(50) NOT NULL, num_de_telephone VARCHAR(10), is_validated BOOLEAN NOT NULL, is_archived BOOLEAN, responsabilite VARCHAR(14), PRIMARY KEY (id), FOREIGN KEY (responsabilite) REFERENCES role (responsabilite)
+    id INT, email VARCHAR(255) NOT NULL, password VARCHAR(50), prenom VARCHAR(50) NOT NULL, nom VARCHAR(50) NOT NULL, num_de_telephone VARCHAR(10), is_validated BOOLEAN NOT NULL, is_archived BOOLEAN, responsabilite VARCHAR(20), PRIMARY KEY (id), FOREIGN KEY (responsabilite) REFERENCES role (responsabilite)
 );
 
 CREATE TABLE COMMENTAIRE (
@@ -56,38 +56,41 @@ CREATE TABLE assister (
     id INT, id_1 INT, PRIMARY KEY (id, id_1), FOREIGN KEY (id) REFERENCES STAGIAIRE (id), FOREIGN KEY (id_1) REFERENCES REUNION (id)
 );
 
-INSERT INTO role (responsabilite) VALUES ('admin'), ('responsable');
+INSERT INTO
+    role (responsabilite)
+VALUES ('ROLE_ADMIN'),
+    ('ROLE_RESPONSABLE');
 
 INSERT INTO
     RESPONSABLE (
-        id, email, mot_de_passe, prenom, nom, num_de_telephone, is_validated, is_archived, responsabilite
+        id, email, password, prenom, nom, num_de_telephone, is_validated, is_archived, responsabilite
     )
 VALUES (
-        1, 'responsable1@example.com', 'mdp123', 'Jean', 'Dupont', '0612345678', true, false, 'responsable'
+        1, 'responsable1@example.com', 'mdp123', 'Jean', 'Dupont', '0612345678', true, false, 'ROLE_ADMIN'
     ),
     (
-        2, 'responsable2@example.com', 'mdp456', 'Marie', 'Martin', '0687654321', true, false, 'admin'
+        2, 'responsable2@example.com', 'mdp456', 'Marie', 'Martin', '0687654321', true, false, 'ROLE_ADMIN'
     ),
     (
-        3, 'responsable3@example.com', 'mdp789', 'Pierre', 'Dubois', '0643219876', true, false, 'responsable'
+        3, 'responsable3@example.com', 'mdp789', 'Pierre', 'Dubois', '0643219876', true, false, 'ROLE_ADMIN'
     ),
     (
-        4, 'responsable4@example.com', 'mdp101', 'Sophie', 'Lefèvre', '0678901234', true, false, 'admin'
+        4, 'responsable4@example.com', 'mdp101', 'Sophie', 'Lefèvre', '0678901234', true, false, 'ROLE_ADMIN'
     ),
     (
-        5, 'responsable5@example.com', 'mdp112', 'Thomas', 'Robert', '0601234567', true, false, 'responsable'
+        5, 'responsable5@example.com', 'mdp112', 'Thomas', 'Robert', '0601234567', true, false, 'ROLE_ADMIN'
     ),
     (
-        6, 'responsable6@example.com', 'mdp131', 'Camille', 'Richard', '0698765432', true, false, 'admin'
+        6, 'responsable6@example.com', 'mdp131', 'Camille', 'Richard', '0698765432', true, false, 'ROLE_RESPONSABLE'
     ),
     (
-        7, 'responsable7@example.com', 'mdp415', 'Nicolas', 'Petit', '0632145678', true, false, 'responsable'
+        7, 'responsable7@example.com', 'mdp415', 'Nicolas', 'Petit', '0632145678', true, false, 'ROLE_RESPONSABLE'
     ),
     (
-        8, 'responsable8@example.com', 'mdp516', 'Charlotte', 'Durand', '0612345678', true, false, 'admin'
+        8, 'responsable8@example.com', 'mdp516', 'Charlotte', 'Durand', '0612345678', true, false, 'ROLE_RESPONSABLE'
     ),
     (
-        9, 'responsable9@example.com', 'mdp617', 'Luc', 'Leroy', '0687654321', true, false, 'responsable'
+        9, 'responsable9@example.com', 'mdp617', 'Luc', 'Leroy', '0687654321', true, false, 'ROLE_RESPONSABLE'
     );
 
 INSERT INTO
@@ -110,7 +113,7 @@ VALUES ('Informatique'),
 
 INSERT INTO
     STAGIAIRE (
-        id, email, mot_de_passe, prenom, nom, num_de_telephone, type_de_presence, url_du_cv, datestage, is_validated, is_archived
+        id, email, password, prenom, nom, num_de_telephone, type_de_presence, url_du_cv, datestage, is_validated, is_archived
     )
 VALUES (
         1, 'stagiaire1@example.com', 'mdp123', 'Laura', 'Martinez', '0612345678', 'temps plein', 'url_cv_1', '2024-02-08', true, false

@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\ResponsableRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ResponsableRepository::class)]
@@ -26,6 +24,9 @@ class Responsable
 
     #[ORM\Column(length: 20, nullable: true)]
     private ?string $numDeTelephone = null;
+
+    #[ORM\Column(length: 50, nullable: true)]
+    private ?string $password = null;
 
     #[ORM\Column(type: 'boolean')]
     private bool $isValidated = false;
@@ -89,6 +90,18 @@ class Responsable
         return $this;
     }
 
+    public function getPassword(): ?string
+    {
+        return $this->password;
+    }
+
+    public function setPassword(string $password): static
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
     public function getIsValidated(): ?bool
     {
         return $this->isValidated;
@@ -124,4 +137,5 @@ class Responsable
 
         return $this;
     }
+    
 }

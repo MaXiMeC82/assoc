@@ -17,22 +17,17 @@ Bienvenue
       <div class="row d-flex justify-content-center">
         <div class="col-lg-10"> <!-- Réduction de la taille de la colonne à 10 colonnes pour centrer le contenu -->
           <h2 class="fw-bold mb-5">Connexion</h2>
-          <form>
-            <!-- Mise en page en grille à 2 colonnes avec des champs de saisie pour les prénoms et noms -->
-            <div class="row">
-            <!-- Email input -->
-            <div class="form-outline mb-4">
-              <input type="email" id="form3Example3" class="form-control" placeholder="Entrez votre adresse e-mail"/>
-              <label class="form-label" for="form3Example3">Adresse Email</label>
-            </div>
-            <!-- Password input -->
-            <div class="form-outline mb-4">
-              <input type="password" id="form3Example4" class="form-control" placeholder="******"/>
-              <label class="form-label" for="form3Example4">Mot de passe</label>
-            </div>
-            <!-- Submit button -->
-            <button type="submit" class="btn btn-primary btn-block mb-4">Se conencter</button>
-          </form>
+            {{ form_start(form) }}
+              <div class="row">
+                <div class="form-outline mb-4 ">
+                {{ form_row(form.email) }}
+                </div>
+                <div class="form-outline mb-5">
+                  {{ form_row(form.password) }}
+                </div>
+              </div>
+            {{ form_row(form.submit) }}
+            {{ form_end(form) }}
         </div>
       </div>
     </div>
