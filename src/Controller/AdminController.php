@@ -54,6 +54,7 @@ class AdminController extends AbstractController
         $form->remove('num_de_telephone');
         $form->remove('is_archived');
         $form->remove('is_validated');
+        $form->remove('responsabilite');
 
         return $this->render('admin/connexion.html.twig', [
             'form' => $form->createView()
@@ -169,6 +170,7 @@ class AdminController extends AbstractController
         $form->remove('is_archived');
         $form->remove('is_validated');
         $form->remove('num_de_telephone');
+        $form->remove('connexion');
 
         return $this->render('admin/ajoutAdmin.html.twig', [
             'form' => $form->createView()

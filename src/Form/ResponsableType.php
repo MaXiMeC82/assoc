@@ -31,6 +31,10 @@ class ResponsableType extends AbstractType
                 'label' => 'Enregistrer',
                 'attr' => ['class' => 'btn btn-primary btn-block mb-4 mt-4']
             ])
+            ->add('connexion', SubmitType::class, [
+                'label' => 'Connexion',
+                'attr' => ['class' => 'btn btn-primary btn-block mb-4 mt-4']
+            ])
             ->add('nom', null, [
                 'attr' => ['class' => 'form-control'],
                 'label' => 'Nom'
