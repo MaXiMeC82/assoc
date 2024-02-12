@@ -26,17 +26,24 @@ Bonjour
     </div>
     <!-- Numero de Tel -->
     <div class="text-center mb-1">
-        <p>Numéro de telephone</p> 
+        <p>Téléphone : {{ responsables.numDeTelephone }}</p> 
     </div>
     <!-- Rôle -->
-    <div class="text-center mt-3">
-        <p  style="margin: 0"><strong>Rôle :</strong></p>
-    </div>
+<div class="text-center mt-3">
+    {% if responsables.responsabilite == 'ROLE_ADMIN' %}
+        <p style="margin: 0"><strong>Rôle : Administrateur</strong></p>
+    {% else %}
+        <p style="margin: 0"><strong>Rôle : Responsable</strong></p>
+    {% endif %}
+</div>
     <!-- Etat du compte -->
-    <div class="text-center mt-1"
-        <p style="margin-bottom: 1rem; margin-top: 0"><strong>Etât du compte :</strong></p>
+    <div class="text-center mt-1">
+      {% if responsables.isValidated == 1 %}
+        <p style="margin-bottom: 1rem; margin-top: 0"><strong>Etât du compte : Validé</strong></p>
+          {% else %}
+        <p style="margin-bottom: 1rem; margin-top: 0"><strong>Etât du compte : En cours de validation</strong></p>
+        {% endif %}
     </div> 
-
 
 
 <div class="container mt-5">
@@ -71,8 +78,9 @@ Bonjour
                     <button type="button" class="btn btn-primary mx-2 rounded-2 d-md-none"><i class="fa-solid fa-key"></i></button>
 
                     <!-- Bouton "Modifier mes informations" en bleu -->
-                    <button type="button" class="btn btn-primary mx-2 rounded-2 d-none d-md-block">Modifier les informations</button>
+                    <a role="button" class="btn btn-primary mx-2 rounded-2 d-none d-md-block" href="#">Modifier les informations</a>
                     <!-- Bouton avec icône de clé visible à une taille d'écran inférieure à md (520px) -->
+
                     <button type="button" class="btn btn-primary mx-2 rounded-2 d-md-none"><i class="fa-solid fa-pencil"></i></button>
                      <!-- <i class="fa-solid fa-pencil"></i> -->
                     

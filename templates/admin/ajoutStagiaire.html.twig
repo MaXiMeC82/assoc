@@ -34,12 +34,19 @@
             <div class="row">
               <div class="col-md-6 mb-4">
                 <div class="form-outline mb-4">
+                  {# {{ form_row(form.url_du_cv, {'attr': {'placeholder': 'Lien du CV'}}) }} #}
+                {% if form.url_du_cv is defined %}
                   {{ form_row(form.url_du_cv, {'attr': {'placeholder': 'Lien du CV'}}) }}
+                {% endif %}
                 </div>
+
               </div>
               <div class="col-md-6 mb-4">
                 <div class="form-outline mb-4">
-                  {{ form_row(form.type_de_presence, {'attr': {'placeholder': 'Précense'}}) }}
+                
+                {% if form.url_du_cv is defined %}
+                   {{ form_row(form.type_de_presence, {'attr': {'placeholder': 'Précense'}}) }}
+                {% endif %}
                 </div>
               </div>
                 {{ form_row(form.submit) }}

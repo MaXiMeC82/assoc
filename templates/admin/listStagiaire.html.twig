@@ -31,9 +31,9 @@
       </div>
       <div class="text-center mt-4">
         <!-- Bouton pour ouvrir le modal -->
-        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="">
+        <a role="button" type="button" class="btn btn-primary btn-sm"  href="{{ path('app_admin_add_stagiaire')}}">
           Ajouter
-        </button>
+        </a>
       </div>
       {% if isPaginated %}
       <nav aria-label="" class="mt-4">

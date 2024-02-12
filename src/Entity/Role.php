@@ -10,9 +10,13 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: RoleRepository::class)]
 class Role
 {
-    #[ORM\Column(length: 20)]
     #[ORM\Id]
+    #[ORM\GeneratedValue]
+
+    #[ORM\Column(length: 20)]
     private ?string $responsabilite = null;
+
+
 
     public function getResponsabilite(): ?string
     {

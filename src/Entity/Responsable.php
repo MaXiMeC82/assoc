@@ -34,7 +34,7 @@ class Responsable
     #[ORM\Column(type: 'boolean')]
     private bool $isArchived = false;
 
-    #[ORM\Column(length: 14)]
+    #[ORM\Column(length: 20)]
     private ?string $responsabilite = null;
 
 
@@ -126,16 +126,15 @@ class Responsable
         return $this;
     }
 
-    public function getResponsabilite(): ?bool
+    public function getResponsabilite(): ?string
     {
         return $this->responsabilite;
     }
 
-    public function setResponsabilite(bool $responsabilite): static
+    public function setResponsabilite(string $responsabilite): static
     {
         $this->responsabilite = $responsabilite;
 
         return $this;
     }
-    
 }

@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
 class StagiaireType extends AbstractType
 {
@@ -16,11 +17,13 @@ class StagiaireType extends AbstractType
 
             ->add('email', null, [
                 'attr' => ['class' => 'form-control', 'placeholder' => 'Entrez votre adresse e-mail'],
-                'label' => 'Adresse Email *'
+                'label' => 'Adresse Email *',
+                'required' => true, // Rendre ce champ requis
             ])
-            ->add('password', null, [
+            ->add('password', PasswordType::class, [
                 'attr' => ['class' => 'form-control', 'placeholder' => '******'],
-                'label' => 'Mot de passe *'
+                'label' => 'Mot de passe *',
+                'required' => true, // Rendre ce champ requis
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Enregistrer',
@@ -28,11 +31,13 @@ class StagiaireType extends AbstractType
             ])
             ->add('nom', null, [
                 'attr' => ['class' => 'form-control'],
-                'label' => 'Nom *'
+                'label' => 'Nom *',
+                'required' => true, // Rendre ce champ requis
             ])
             ->add('prenom', null, [
                 'attr' => ['class' => 'form-control'],
-                'label' => 'Prénom *'
+                'label' => 'Prénom *',
+                'required' => true, // Rendre ce champ requis
             ])
             ->add('num_de_telephone')
             ->add('type_de_presence', null, [

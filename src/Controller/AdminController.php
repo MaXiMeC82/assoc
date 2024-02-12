@@ -18,6 +18,10 @@ use App\Service\ReunionManagerService;
 use App\Service\EquipePaginationService;
 use App\Service\EquipeManagerService;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+
+
 
 
 class AdminController extends AbstractController
@@ -26,17 +30,21 @@ class AdminController extends AbstractController
     private $stagiairePaginationService;
     private $reunionPaginationService;
     private $equipePaginationService;
+    
+
 
     public function __construct(
         ResponsablePaginationService $responsablePaginationService,
         StagiairePaginationService $stagiairePaginationService,
         ReunionPaginationService $reunionPaginationService,
-        EquipePaginationService $equipePaginationService
+        EquipePaginationService $equipePaginationService,
+        
     ) {
         $this->responsablePaginationService = $responsablePaginationService;
         $this->stagiairePaginationService = $stagiairePaginationService;
         $this->reunionPaginationService = $reunionPaginationService;
         $this->equipePaginationService = $equipePaginationService;
+        
     }
 
 
@@ -55,6 +63,7 @@ class AdminController extends AbstractController
         $form->remove('is_archived');
         $form->remove('is_validated');
         $form->remove('responsabilite');
+        $form->remove('submit');
 
         return $this->render('admin/connexion.html.twig', [
             'form' => $form->createView()
@@ -159,7 +168,7 @@ class AdminController extends AbstractController
     }
 
     #[Route('/admin/addEmploye', name: 'app_admin_add')]
-    public function addAdmin(ManagerRegistry $doctrine): Response
+    public function addAdmin(ManagerRegistry $doctrine, Request $request): Response
     {
         $entityManager = $doctrine->getManager();
         $responsable = new Responsable();
@@ -172,12 +181,27 @@ class AdminController extends AbstractController
         $form->remove('num_de_telephone');
         $form->remove('connexion');
 
-        return $this->render('admin/ajoutAdmin.html.twig', [
-            'form' => $form->createView()
-        ]);
+        // mon formulaire va aller traiter la requete 
+        $form->handleRequest($request);
+
+        // est ce que le formulaire  a été soumis
+        if ($form->isSubmitted()) {
+
+            $manager = $doctrine->getManager();
+            $manager->persist($responsable);
+
+            $manager->flush();
+
+            return $this->redirectToRoute('app_admin_responsable');
+        } else {
+
+            return $this->render('admin/ajoutAdmin.html.twig', [
+                'form' => $form->createView()
+            ]);
+        }
     }
     #[Route('/admin/addStagiaire', name: 'app_admin_add_stagiaire')]
-    public function addResponsable(ManagerRegistry $doctrine): Response
+    public function addResponsable(ManagerRegistry $doctrine, Request $request): Response
     {
         $entityManager = $doctrine->getManager();
         $stagiaire = new Stagiaire();
@@ -187,9 +211,65 @@ class AdminController extends AbstractController
         $form->remove('is_validated');
         $form->remove('num_de_telephone');
         $form->remove('datestage');
+        $form->handleRequest($request);
 
-        return $this->render('admin/ajoutStagiaire.html.twig', [
-            'form' => $form->createView()
-        ]);
+        // est ce que le formulaire  a été soumis
+        if ($form->isSubmitted()) {
+            $manager = $doctrine->getManager();
+            $manager->persist($stagiaire);
+            $manager->flush();
+            return $this->redirectToRoute('app_admin_stagiaire');
+        } else {
+            return $this->render('admin/ajoutStagiaire.html.twig', [
+                'form' => $form->createView()
+            ]);
+        }
     }
+
+    // #[Route('/admin/connexion', name: 'app_admin_connexion')]
+    // public function connexion(ManagerRegistry $doctrine, Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
+    // {
+    //     $entityManager = $doctrine->getManager();
+    //     $responsable = new Responsable();
+    //     $form = $this->createForm(ResponsableType::class, $responsable, [
+    //         'include_responsabilite' => true, // Ne pas inclure le champ 'responsabilite'
+    //     ]);
+    
+    //     $form->remove('is_archived');
+    //     $form->remove('is_validated');
+    //     $form->remove('num_de_telephone');
+    //     $form->remove('nom');
+    //     $form->remove('prenom');
+    //     $form->remove('responsabilite');
+    //     $form->remove('submit');
+    
+    //     // mon formulaire va aller traiter la requete 
+    //     $form->handleRequest($request);
+    
+    //     // est ce que le formulaire  a été soumis
+    //     if ($form->isSubmitted() && $form->isValid()) {
+    //         // Récupérez les données du formulaire
+    //         $data = $form->getData();
+    
+    //         // Recherchez l'utilisateur dans la base de données en fonction de l'email saisi
+    //         $responsableRepository = $doctrine->getRepository(Responsable::class);
+    //         $user = $responsableRepository->findOneBy(['email' => $data->getEmail()]);
+    
+    //         // Si l'utilisateur existe et que le mot de passe est correct
+    //         if ($user && $passwordEncoder->isPasswordValid($user, $data->getPassword())) {
+    //             // Connectez l'utilisateur (vous devrez peut-être implémenter cette fonctionnalité si elle n'est pas déjà faite)
+    
+    //             // Redirigez l'utilisateur vers une autre page une fois connecté
+    //             return $this->redirectToRoute('nom_de_la_route_vers_la_page_de_connexion_réussie');
+    //         } else {
+    //             // Affichez un message d'erreur si les informations d'identification sont incorrectes
+    //             $this->addFlash('danger', 'Adresse e-mail ou mot de passe incorrect');
+    //         }
+    //     }
+    
+    //     return $this->render('admin/connexion.html.twig', [
+    //         'form' => $form->createView()
+    //     ]);
+    // }
+    
 }

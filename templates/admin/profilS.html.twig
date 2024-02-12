@@ -12,29 +12,22 @@ Bonjour
 
 {% block body %}
     
-     <!-- Avatar -->
+
     <div class="text-center">
         <img src="{{ asset('img/logo.jpg') }}" alt="Avatar" class="img-fluid rounded-circle" style="width: 150px;">
     </div>
-    <!-- Nom et Prenom -->
     <div class="text-center mt-3">
         <h5><strong>{{ stagiaire.nom }} {{ stagiaire.prenom }}</strong></h5> 
     </div>
-    <!-- Email -->
     <div class="text-center mt-1">
         <p style="margin: 0">{{ stagiaire.email }}</p> 
     </div>
-
-    <!-- Numero de Tel -->
     <div class="text-center mb-1">
         <p>Numéro de telephone</p> 
     </div>
-
-    <!-- Rôle -->
     <div class="text-center mt-3">
         <p  style="margin: 0"><strong>Rôle :</strong></p>
     </div>
-    <!-- Etat du compte -->
     <div class="text-center mt-1"
         <p style="margin-bottom: 1rem; margin-top: 0"><strong>Etât du compte :</strong></p>
     </div> 
@@ -63,23 +56,13 @@ Bonjour
         <div class="row">
             <div class="col-md-6 offset-md-3 text-center">
                 <div class="btn-group" role="group" aria-label="Actions">
-                    <!-- Bouton "Mot de passe oublié" en bleu -->
-                     <!-- Bouton Mot de passe oublié visible à partir de la taille d'écran md (768px) -->
                     <button type="button" class="btn btn-primary mx-2 rounded-2 d-none d-md-block">Mot de passe oublié</button>
-                    <!-- Bouton avec icône de clé visible à une taille d'écran inférieure à md (520px) -->
                     <button type="button" class="btn btn-primary mx-2 rounded-2 d-md-none"><i class="fa-solid fa-key"></i></button>
-
-                    <!-- Bouton "Modifier mes informations" en bleu -->
                     <button type="button" class="btn btn-primary mx-2 rounded-2 d-none d-md-block">Modifier les informations</button>
-                    <!-- Bouton avec icône de clé visible à une taille d'écran inférieure à md (520px) -->
                     <button type="button" class="btn btn-primary mx-2 rounded-2 d-md-none"><i class="fa-solid fa-pencil"></i></button>
-                     <!-- <i class="fa-solid fa-pencil"></i> -->
-                    
-                    <!-- Bouton "Archiver mon compte" en orange -->
                     <button type="button" class="btn btn-outline-info mx-2 rounded-2 d-none d-md-block">Archiver le compte</button>
-                    <!-- Bouton avec icône de clé visible à une taille d'écran inférieure à md (520px) -->
                     <button type="button" class="btn btn-outline-info mx-2 rounded-2 d-md-none"><i class="fa-solid fa-folder-open"></i></button>
-                    <!-- <i class="fa-solid fa-folder-open"></i> -->
+
                 </div>
             </div>
         </div>
