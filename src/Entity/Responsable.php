@@ -149,6 +149,8 @@ class Responsable implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private array $roles = [];
 
+
+
      /**
      * @see UserInterface
      */
@@ -186,4 +188,5 @@ class Responsable implements UserInterface, PasswordAuthenticatedUserInterface
     {
         return (string) $this->prenom;
     }
+
 }

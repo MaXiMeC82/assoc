@@ -23,8 +23,7 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
-
-
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 
 
@@ -208,6 +207,4 @@ class AdminController extends AbstractController
             ]);
         }
     }
-
-
 }

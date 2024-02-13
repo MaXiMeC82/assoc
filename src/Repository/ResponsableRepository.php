@@ -28,6 +28,16 @@ class ResponsableRepository extends ServiceEntityRepository
             ->getQuery()
             ->getSingleScalarResult();
     }
+
+    public function searchByName($name)
+    {
+        return $this->createQueryBuilder('r')
+            ->where('r.nom LIKE :name')
+            ->orWhere('r.prenom LIKE :name')
+            ->setParameter('name', '%'.$name.'%')
+            ->getQuery()
+            ->getResult();
+    }
     //    /**
     //     * @return Responsable[] Returns an array of Responsable objects
     //     */
