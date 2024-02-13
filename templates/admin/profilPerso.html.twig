@@ -12,31 +12,31 @@ Bonjour
 {% block body %}
 
             <!-- Avatar -->
-            <div class="text-center">
-                <img src="{{ asset('img/logo.jpg') }}" alt="Avatar" class="img-fluid rounded-circle" style="width: 150px;">
-            </div>
-            <!-- Nom et Prenom -->
-            <div class="text-center mt-3">
-                <h5><strong>NOM Prenom</strong></h5>
-            </div>
-            <!-- Email -->
-            <div class="text-center mt-1">
-                <p style="margin: 0">Email@example.com</p>
-            </div>
+<div class="text-center">
+    <img src="{{ asset('img/logo.jpg') }}" alt="Avatar" class="img-fluid rounded-circle" style="width: 150px;">
+</div>
+<!-- Nom et Prénom -->
+<div class="text-center mt-3">
+    <h5><strong>{{ app.user.prenom }} {{ app.user.nom }}</strong></h5>
+</div>
+<!-- Email -->
+<div class="text-center mt-1">
+    <p style="margin: 0">{{ app.user.email }}</p>
+</div>
 
-            <!-- Numero de Tel -->
-            <div class="text-center mb-1">
-                <p>Numéro de téléphone</p>
-            </div>
+<!-- Numéro de Tel -->
+<div class="text-center mb-1">
+    <p>{{ app.user.numDeTelephone }}</p>
+</div>
 
-            <!-- Rôle -->
-            <div class="text-center mt-3">
-                <p  style="margin: 0"><strong>Rôle :</strong></p>
-            </div>
-            <!-- Etat du compte -->
-            <div class="text-center mt-1">
-                <p style="margin-bottom: 1rem; margin-top: 0"><strong>Etât du compte :</strong></p>
-            </div>
+<!-- Rôle -->
+<div class="text-center mt-3">
+    <p style="margin: 0"><strong>Rôle :</strong> {{ app.user.roles[0] }}</p>
+</div>
+<!-- État du compte -->
+<div class="text-center mt-1">
+    <p style="margin-bottom: 1rem; margin-top: 0"><strong>État du compte :</strong> {{ app.user.isValidated ? 'En cours de validation' : 'Actif' }}</p>
+</div>
 
 
 <div class="container mt-5">
