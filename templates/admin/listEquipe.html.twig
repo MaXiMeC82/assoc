@@ -24,8 +24,8 @@
             <tr class="bckgndclr">
               <td class="text-center">{{ equipe.nom }}</td>
               <!-- Utilisez la classe d-none d-md-table-cell pour masquer la colonne email sur les petits écrans -->
-              <td class="text-center d-none d-md-table-cell">{{ equipe.dater|date('Y/m/d') }}</td>
-              <td class="text-center d-none d-md-table-cell">{{ equipe.dater|date('Y/m/d') }}</td>
+              <td class="text-center d-none d-md-table-cell">{{ equipe.dater|date('d/m/Y') }}</td>
+              <td class="text-center d-none d-md-table-cell">{{ equipe.dater|date('d/m/Y') }}</td>
               <td class="text-center"><a class="btn btn-outline-info btn-sm" href="" role="button">Afficher</a></td>
             </tr>
           {% endfor %}
@@ -33,9 +33,9 @@
       </div>
       <div class="text-center mt-4">
         <!-- Bouton pour ouvrir le modal -->
-        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="">
+        <a role="button" type="button" class="btn btn-primary btn-sm"  href="{{ path('app_admin_add_equipe')}}">
           Ajouter
-        </button>
+        </a>
       </div>
 
       {% if isPaginated %}

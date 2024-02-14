@@ -5,6 +5,10 @@ namespace App\Entity;
 use App\Repository\CompetenceRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+
+
 #[ORM\Entity(repositoryClass: CompetenceRepository::class)]
 class Competence
 {
@@ -32,4 +36,11 @@ class Competence
 
         return $this;
     }
+
+    
+    public function __toString(): string
+    {
+        return $this->nom ?? ''; // Remplacez 'responsabilite' par la propriété que vous souhaitez afficher
+    }
+
 }

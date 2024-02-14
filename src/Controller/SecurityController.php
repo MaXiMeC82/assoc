@@ -58,15 +58,16 @@ class SecurityController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-             // Encodez le mot de passe
+            // Encodez le mot de passe
             $encodedPassword = $passwordEncoder->hashPassword($responsable, $responsable->getPassword());
             $responsable->setPassword($encodedPassword);
 
-            // // Ajoutez le rôle ROLE_RESPONSABLE
+            // // Ajoutez le rôle ROLE_
             $responsable->setRoles(['ROLE_ADMIN']);
             $responsable->setResponsabilite('ROLE_ADMIN');
 
             $entityManager->persist($responsable);
+
             $entityManager->flush();
 
             // Redirigez l'utilisateur vers une autre page après l'enregistrement

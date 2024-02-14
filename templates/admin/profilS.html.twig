@@ -17,7 +17,7 @@ Bonjour
         <img src="{{ asset('img/logo.jpg') }}" alt="Avatar" class="img-fluid rounded-circle" style="width: 150px;">
     </div>
     <div class="text-center mt-3">
-        <h5><strong>{{ stagiaire.nom }} {{ stagiaire.prenom }}</strong></h5> 
+        <h5><strong>{{ stagiaire.nom|capitalize }} {{ stagiaire.prenom|capitalize }}</strong></h5> 
     </div>
     <div class="text-center mt-1">
         <p style="margin: 0">{{ stagiaire.email }}</p> 
@@ -25,12 +25,18 @@ Bonjour
     <div class="text-center mb-1">
         <p>Numéro de telephone</p> 
     </div>
-    <div class="text-center mt-3">
-        <p  style="margin: 0"><strong>Rôle :</strong></p>
-    </div>
-    <div class="text-center mt-1"
-        <p style="margin-bottom: 1rem; margin-top: 0"><strong>Etât du compte :</strong></p>
+<div class="text-center mt-3">
+        <p style="margin: 0"><strong>Rôle : Stagiaire</strong></p>
+</div>
+    <!-- Etat du compte -->
+    <div class="text-center mt-1">
+      {% if stagiaire.isValidated == 1 %}
+        <p style="margin-bottom: 1rem; margin-top: 0"><strong>Etât du compte : Validé</strong></p>
+          {% else %}
+        <p style="margin-bottom: 1rem; margin-top: 0"><strong>Etât du compte : En cours de validation</strong></p>
+        {% endif %}
     </div> 
+
 <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-md-8">

@@ -7,6 +7,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+
 #[ORM\Entity(repositoryClass: ResponsableRepository::class)]
 class Responsable implements UserInterface, PasswordAuthenticatedUserInterface
 {
@@ -27,7 +30,7 @@ class Responsable implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 20, nullable: true)]
     private ?string $numDeTelephone = null;
 
-        /**
+    /**
      * @var string The hashed password
      */
     #[ORM\Column]
@@ -39,7 +42,7 @@ class Responsable implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'boolean')]
     private bool $isArchived = false;
 
-    #[ORM\Column(length: 20)]
+    #[ORM\Column(length: 255)]
     private ?string $responsabilite = null;
 
 
@@ -95,7 +98,7 @@ class Responsable implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-        /**
+    /**
      * @see PasswordAuthenticatedUserInterface
      */
     public function getPassword(): ?string
@@ -151,7 +154,7 @@ class Responsable implements UserInterface, PasswordAuthenticatedUserInterface
 
 
 
-     /**
+    /**
      * @see UserInterface
      */
     public function getRoles(): array
@@ -170,7 +173,7 @@ class Responsable implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-        /**
+    /**
      * @see UserInterface
      */
     public function eraseCredentials(): void
@@ -179,7 +182,7 @@ class Responsable implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
-        /**
+    /**
      * A visual identifier that represents this user.
      *
      * @see UserInterface

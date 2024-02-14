@@ -4,8 +4,16 @@ namespace App\Controller;
 
 use App\Entity\Responsable;
 use App\Form\ResponsableType;
+
+use App\Entity\Reunion;
+use App\Form\ReunionType;
+
 use App\Entity\Stagiaire;
 use App\Form\StagiaireType;
+
+use App\Entity\Equipe;
+use App\Form\EquipeType;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -203,6 +211,60 @@ class AdminController extends AbstractController
             return $this->redirectToRoute('app_admin_stagiaire');
         } else {
             return $this->render('admin/ajoutStagiaire.html.twig', [
+                'form' => $form->createView()
+            ]);
+        }
+    }
+    #[Route('/admin/addReunion', name: 'app_admin_add_reunion')]
+    public function addReunion(ManagerRegistry $doctrine, Request $request): Response
+    {
+        $entityManager = $doctrine->getManager();
+        $reunion = new Reunion();
+        $form = $this->createForm(ReunionType::class, $reunion);
+
+
+        // mon formulaire va aller traiter la requete 
+        $form->handleRequest($request);
+
+        // est ce que le formulaire  a été soumis
+        if ($form->isSubmitted()) {
+
+            $manager = $doctrine->getManager();
+            $manager->persist($reunion);
+
+            $manager->flush();
+
+            return $this->redirectToRoute('app_admin_reunion');
+        } else {
+
+            return $this->render('admin/ajoutReunion.html.twig', [
+                'form' => $form->createView()
+            ]);
+        }
+    }
+    #[Route('/admin/addEquipe', name: 'app_admin_add_equipe')]
+    public function addEquipe(ManagerRegistry $doctrine, Request $request): Response
+    {
+        $entityManager = $doctrine->getManager();
+        $reunion = new Equipe();
+        $form = $this->createForm(EquipeType::class, $reunion);
+
+
+        // mon formulaire va aller traiter la requete 
+        $form->handleRequest($request);
+
+        // est ce que le formulaire  a été soumis
+        if ($form->isSubmitted()) {
+
+            $manager = $doctrine->getManager();
+            $manager->persist($reunion);
+
+            $manager->flush();
+
+            return $this->redirectToRoute('app_admin_equipe');
+        } else {
+
+            return $this->render('admin/ajoutEquipe.html.twig', [
                 'form' => $form->createView()
             ]);
         }

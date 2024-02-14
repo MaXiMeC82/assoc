@@ -21,7 +21,7 @@
           </thead>
           {% for reunion in reunions %}
             <tr class="bckgndclr">
-              <td class="text-center">{{ reunion.dater|date('Y/m/d') }}</td>
+              <td class="text-center">{{ reunion.dater|date('d/m/Y') }}</td>
               <!-- Utilisez la classe d-none d-md-table-cell pour masquer la colonne email sur les petits écrans -->
               <td class="text-center d-none d-md-table-cell">{{ reunion.lieu  }}</td>
               <td class="text-center"><a class="btn btn-outline-info btn-sm" href="" role="button">Afficher</a></td>
@@ -31,9 +31,9 @@
       </div>
       <div class="text-center mt-4">
         <!-- Bouton pour ouvrir le modal -->
-        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="">
+        <a role="button" type="button" class="btn btn-primary btn-sm"  href="{{ path('app_admin_add_reunion')}}">
           Ajouter
-        </button>
+        </a>
       </div>
 
       {% if isPaginated %}

@@ -17,7 +17,7 @@ Bonjour
 </div>
 <!-- Nom et Prénom -->
 <div class="text-center mt-3">
-    <h5><strong>{{ app.user.prenom }} {{ app.user.nom }}</strong></h5>
+    <h5><strong>{{ app.user.prenom|capitalize }} {{ app.user.nom|capitalize }}</strong></h5>
 </div>
 <!-- Email -->
 <div class="text-center mt-1">
@@ -26,13 +26,18 @@ Bonjour
 
 <!-- Numéro de Tel -->
 <div class="text-center mb-1">
-    <p>{{ app.user.numDeTelephone }}</p>
+    <p>Téléphone : {{ app.user.numDeTelephone }}</p>
 </div>
 
 <!-- Rôle -->
 <div class="text-center mt-3">
-    <p style="margin: 0"><strong>Rôle :</strong> {{ app.user.roles[0] }}</p>
+{% if app.user.roles[0] == 'ROLE_ADMIN'%}
+    <p style="margin: 0"><strong>Rôle : Administrateur</strong></p>
+    {% else %}
+    <p style="margin: 0"><strong>Rôle : Résponsable</strong></p>
+    {% endif %}
 </div>
+
 <!-- État du compte -->
 <div class="text-center mt-1">
     <p style="margin-bottom: 1rem; margin-top: 0"><strong>État du compte :</strong> {{ app.user.isValidated ? 'En cours de validation' : 'Actif' }}</p>
