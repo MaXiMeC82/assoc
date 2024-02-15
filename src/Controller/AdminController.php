@@ -17,22 +17,18 @@ use App\Form\EquipeType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Service\ResponsableManagerService;
-use App\Service\ResponsablePaginationService;
-use App\Service\StagiaireManagerService;
-use App\Service\StagiairePaginationService;
-use App\Service\ReunionPaginationService;
-use App\Service\ReunionManagerService;
-use App\Service\EquipePaginationService;
-use App\Service\EquipeManagerService;
+
+use App\Service\PaginationService;
+use App\Service\ManagerService;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
-use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
-use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+
+use App\Repository\StagiaireRepository;
+use App\Repository\ResponsableRepository;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
+use App\Service\UpdateService;
+use App\Service\ArchiverService;
 
 
 class AdminController extends AbstractController
@@ -41,15 +37,18 @@ class AdminController extends AbstractController
     private $stagiairePaginationService;
     private $reunionPaginationService;
     private $equipePaginationService;
-
+    private $archiverService;
+    private $updateService;
 
 
 
     public function __construct(
-        ResponsablePaginationService $responsablePaginationService,
-        StagiairePaginationService $stagiairePaginationService,
-        ReunionPaginationService $reunionPaginationService,
-        EquipePaginationService $equipePaginationService,
+        PaginationService $responsablePaginationService,
+        PaginationService $stagiairePaginationService,
+        PaginationService $reunionPaginationService,
+        PaginationService $equipePaginationService,
+        ArchiverService $archiverService,
+        UpdateService $updateService,
 
 
     ) {
@@ -57,6 +56,8 @@ class AdminController extends AbstractController
         $this->stagiairePaginationService = $stagiairePaginationService;
         $this->reunionPaginationService = $reunionPaginationService;
         $this->equipePaginationService = $equipePaginationService;
+        $this->archiverService = $archiverService;
+        $this->updateService = $updateService;
     }
 
 
@@ -65,28 +66,60 @@ class AdminController extends AbstractController
     {
         return $this->render('admin/profilPerso.html.twig');
     }
+
     #[Route('/admin/profil/responsable/{id<\d+>}', name: 'app_admin_profil')]
-    public function profil(ResponsableManagerService $responsableService, $id): Response
+    public function profil(ManagerService $responsableService, $id, Request $request): Response
     {
         $responsables = $responsableService->findResponsableById($id);
 
         if (!$responsables) {
             return $this->redirectToRoute('app_admin_responsable');
         }
+        if ($request->isMethod('POST')) {
+            // Effectuer l'archivage du stagiaire
+            $this->archiverService->archiveResponsableById($id);
+            // Redirection ou autre traitement après l'archivage
+        }
         return $this->render('admin/profil.html.twig', ['responsables' => $responsables]);
     }
 
     #[Route('/admin/profil/stagiaire/{id<\d+>}', name: 'app_admin_profilS')]
-    public function profilS(StagiaireManagerService $stagiaireService, $id): Response
+    public function profilS(ManagerService $stagiaireService, $id, Request $request): Response
     {
         $stagiaire = $stagiaireService->findStagiaireById($id);
 
         if (!$stagiaire) {
             return $this->redirectToRoute('app_admin_responsable');
         }
+        if ($request->isMethod('POST')) {
+            // Effectuer l'archivage du stagiaire
+            $this->archiverService->archiveStagiaireById($id);
+            // Redirection ou autre traitement après l'archivage
+        }
         return $this->render('admin/profilS.html.twig', ['stagiaire' => $stagiaire]);
     }
 
+    #[Route('/admin/reunion/{id<\d+>}', name: 'app_admin_detailReunion')]
+    public function detailReunion(ManagerService $reunionManagerService, $id): Response
+    {
+        $reunion = $reunionManagerService->findReunionById($id);
+
+        if (!$reunion) {
+            return $this->redirectToRoute('app_admin_responsable');
+        }
+        return $this->render('admin/detailReunion.html.twig', ['reunion' => $reunion]);
+    }
+
+    #[Route('/admin/equipe/{id<\d+>}', name: 'app_admin_detailEquipe')]
+    public function detailEquipe(ManagerService $equipeManagerService, $id): Response
+    {
+        $equipe = $equipeManagerService->findEquipeById($id);
+
+        if (!$equipe) {
+            return $this->redirectToRoute('app_admin_responsable');
+        }
+        return $this->render('admin/detailEquipe.html.twig', ['equipe' => $equipe]);
+    }
 
 
     #[Route('/admin/responsable/{page?1}/{nbre?8}', name: 'app_admin_responsable')]
@@ -269,4 +302,54 @@ class AdminController extends AbstractController
             ]);
         }
     }
+
+
+    #[Route('/admin/reunion/addSt', name: 'app_admin_add_member_stagiaire', methods: ['GET'])]
+    public function getStagiaires(StagiaireRepository $stagiaireRepository): JsonResponse
+    {
+        $stagiaires = $stagiaireRepository->findAll();
+        return new JsonResponse($stagiaires);
+    }
+
+    #[Route('/admin/reunion/addRe', name: 'app_admin_add_Responsable', methods: ['GET'])]
+    public function getResponsables(ResponsableRepository $responsableRepository): JsonResponse
+    {
+        $responsables = $responsableRepository->findAll();
+        return new JsonResponse($responsables);
+    }
+    // #[Route('/admin/profil/modifStagiaire/{id}', name: 'app_admin_update_stagiaire')]
+    // public function updateStagiaire(Request $request, Stagiaire $stagiaire): Response
+    // {
+    //     // Récupérer les nouvelles données du formulaire par exemple
+    //     $newData = [
+    //         'nom' => $request->request->get('nom'),
+    //         'prenom' => $request->request->get('prenom'),
+    //         'email' => $request->request->get('email'),
+    //         // Ajoutez ici d'autres données si nécessaire
+    //     ];
+
+    //     // Appeler la méthode du service pour mettre à jour le profil du stagiaire
+    //     $this->profilService->updateProfilStagiaire($stagiaire, $newData);
+
+
+    //     return $this->redirectToRoute('admin/profil.html.twig');
+    // }
+
+    // #[Route('/admin/profil/modifResponsable/', name: 'app_admin_update_responsable')]
+    // public function updateResponsable(Request $request, Responsable $responsable): Response
+    // {
+    //     // Récupérer les nouvelles données du formulaire par exemple
+    //     $newData = [
+    //         'nom' => $request->request->get('nom'),
+    //         'prenom' => $request->request->get('prenom'),
+    //         'email' => $request->request->get('email'),
+    //         'numdetelephone' => $request->request->get('num_de_telephone'),
+    //         // Ajoutez ici d'autres données si nécessaire
+    //     ];
+
+    //     // Appeler la méthode du service pour mettre à jour le profil du responsable
+    //     $this->profilService->updateProfilResponsable($responsable, $newData);
+
+    //     return $this->redirectToRoute('admin/profil.html.twig');
+    // }
 }

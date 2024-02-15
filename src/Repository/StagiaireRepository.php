@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Stagiaire;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\EntityManagerInterface;
 
 /**
  * @extends ServiceEntityRepository<Stagiaire>
@@ -15,7 +16,9 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Stagiaire[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class StagiaireRepository extends ServiceEntityRepository
+
 {
+
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Stagiaire::class);
@@ -28,6 +31,36 @@ class StagiaireRepository extends ServiceEntityRepository
             ->getQuery()
             ->getSingleScalarResult();
     }
+
+        // Méthode modifier le status d'un stagiaire (archiver ou  Actif)
+        public function save(Stagiaire $stagiaire)
+        {
+            $this->_em->persist($stagiaire);
+            $this->_em->flush();
+        }
+
+            // Méthode pour mettre à jour les données d'un stagiaire
+    public function updateStagiaire(Stagiaire $stagiaire, array $newData)
+    {
+        if (array_key_exists('nom', $newData)) {
+            $stagiaire->setNom($newData['nom']);
+        }
+        if (array_key_exists('prenom', $newData)) {
+            $stagiaire->setPrenom($newData['prenom']);
+        }
+        if (array_key_exists('email', $newData)) {
+            $stagiaire->setEmail($newData['email']);
+        }
+        if (array_key_exists('numdeTelephone', $newData)) {
+            $stagiaire->setNumDeTelephone($newData['numdeTelephone']);
+        }
+        // Ajoutez d'autres champs à mettre à jour si nécessaire
+
+        $this->_em->flush();
+    }
+}
+
+
 //    /**
 //     * @return Stagiaire[] Returns an array of Stagiaire objects
 //     */
@@ -52,4 +85,4 @@ class StagiaireRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
-}
+

@@ -78,11 +78,10 @@ Bonjour
                     <button type="button" class="btn btn-primary mx-2 rounded-2 d-md-none"><i class="fa-solid fa-key"></i></button>
 
                     <!-- Bouton "Modifier mes informations" en bleu -->
-                    <button type="button" class="btn btn-primary mx-2 rounded-2 d-none d-md-block">Modifier mes informations</button>
+                    <button type="button" class="btn btn-primary mx-2 rounded-2 d-none d-md-block" data-toggle="modal" data-target="#modifierModal">Modifier mes informations</button>
                     <!-- Bouton avec icône de clé visible à une taille d'écran inférieure à md (520px) -->
                     <button type="button" class="btn btn-primary mx-2 rounded-2 d-md-none"><i class="fa-solid fa-pencil"></i></button>
                      <!-- <i class="fa-solid fa-pencil"></i> -->
-                    
                     <!-- Bouton "Archiver mon compte" en orange -->
                     <button type="button" class="btn btn-outline-info mx-2 rounded-2 d-none d-md-block">Archiver mon compte</button>
                     <!-- Bouton avec icône de clé visible à une taille d'écran inférieure à md (520px) -->
@@ -94,4 +93,47 @@ Bonjour
     </div>
 </div>
 
+
+<div class="modal fade" id="modifierModal" tabindex="-1" role="dialog" aria-labelledby="modifierModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header bckgndclr">
+        <h5 class="modal-title" id="modifierModalLabel">Modifier les données</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+<div class="modal-body bckgndclr">
+    <!-- Formulaire pour modifier les données -->
+    <form id="modifierForm" action="{{ path('app_admin_update_responsable')}}" method="post">
+        <div class="form-group">
+            <label for="nouvelleDateDebut"> Nouveau nom :</label>
+            <input type="text" class="form-control" name="nom" id="nouvelleDateDebut" placeholder="Entrez votre nom">
+        </div>
+        <div class="form-group">
+            <label for="nouvelleDateFin"> Nouveau prénom :</label>
+            <input type="text" class="form-control" name="prenom" id="nouvelleDateFin" placeholder="Entrez votre prénom">
+        </div>
+        <div class="form-group">
+            <label for="nouvelleDateReunion"> Adresse email : </label>
+            <input type="text" class="form-control" name="email" id="nouvelleDateReunion" placeholder="Entrez la nouvelle adresse">
+        </div>
+        <div class="form-group">
+            <label for="nouveauResponsable"> Téléphone :</label>
+            <input type="text" class="form-control" name="numdetelephone" id="nouveauResponsable" placeholder="Entrez le nouveau numéro">
+        </div>
+        {# <div class="form-group">
+            <label for="nouveauSecteur"> Secteur de l'équipe :</label>
+            <input type="text" class="form-control" id="nouveauSecteur" placeholder="Entrez le nouveau secteur">
+        </div> #}
+        <!-- Conteneur des boutons aligné à droite -->
+        <div class="d-flex justify-content-end">
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
+            <button type="button" class="btn btn-outline-info ml-2" data-dismiss="modal">Annuler</button>
+        </div>
+    </form>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}

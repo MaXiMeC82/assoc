@@ -29,15 +29,42 @@ class ResponsableRepository extends ServiceEntityRepository
             ->getSingleScalarResult();
     }
 
-    public function searchByName($name)
+    // Méthode modifier le status d'un responsable (archiver ou  Actif)
+    public function save(Responsable $responsable)
     {
-        return $this->createQueryBuilder('r')
-            ->where('r.nom LIKE :name')
-            ->orWhere('r.prenom LIKE :name')
-            ->setParameter('name', '%'.$name.'%')
-            ->getQuery()
-            ->getResult();
+        $this->_em->persist($responsable);
+        $this->_em->flush();
     }
+
+    // Méthode pour mettre à jour les données d'un stagiaire
+    public function updateStagiaire(Responsable $stagiaire, array $newData)
+    {
+        if (array_key_exists('nom', $newData)) {
+            $stagiaire->setNom($newData['nom']);
+        }
+        if (array_key_exists('prenom', $newData)) {
+            $stagiaire->setPrenom($newData['prenom']);
+        }
+        if (array_key_exists('email', $newData)) {
+            $stagiaire->setEmail($newData['email']);
+        }
+        if (array_key_exists('numdeTelephone', $newData)) {
+            $stagiaire->setNumDeTelephone($newData['numdeTelephone']);
+        }
+        // Ajoutez d'autres champs à mettre à jour si nécessaire
+
+        $this->_em->flush();
+    }
+
+    // public function searchByName($name)
+    // {
+    //     return $this->createQueryBuilder('r')
+    //         ->where('r.nom LIKE :name')
+    //         ->orWhere('r.prenom LIKE :name')
+    //         ->setParameter('name', '%'.$name.'%')
+    //         ->getQuery()
+    //         ->getResult();
+    // }
     //    /**
     //     * @return Responsable[] Returns an array of Responsable objects
     //     */

@@ -6,7 +6,7 @@ Bienvenue
 
 {% block PageTitle %}
 {# Bonjour {{ responsable.prenom }} #}
-Détails de la réunion
+Détails de l'équipe
 {% endblock %}
 
 {% block body %}
@@ -17,18 +17,18 @@ Détails de la réunion
         <div class="card-body">
           <div class="row">
             <div class="col-md-6">
-              <h6 class="card-title mb-3" id="dateDebut1">Date :</h6>
-              <h6 class="card-title mb-3" id="dateFin1"></h6>
-              <h6 class="card-title mb-3" id="dateReunion1">Lieu : </h6>
-              <h6 class="card-title mb-3" id="responsable1">Responsable(s) :</h6>
-              <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modifierModal1">
+              <h6 class="card-title mb-3" id="dateDebut">Date de début : {{ equipe.dater|date('d/m/Y') }}</h6>
+              <h6 class="card-title mb-3" id="dateFin">Date de fin : {{ equipe.datefin|date('d/m/Y') }}</h6>
+              <h6 class="card-title mb-3" id="dateReunion">Date de la Réunion :</h6>
+              <h6 class="card-title mb-3" id="responsable">Responsable :</h6>
+              <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modifierModal">
                 Modifier
               </button>
             </div>
             <div class="col-md-6 mt-4 mt-md-0 text-center bckgndclr rounded">
               <div>
                 <h5 class="card-title mb-3 mt-3 text-decoration-underline" id="secteurTitre">Secteur de l'équipe</h5>
-                <p class="mt-4" id="secteur"></p>
+                <p class="mt-4" id="secteur">{{ equipe.nom}}</p>
               </div>
             </div>
           </div>
@@ -38,7 +38,7 @@ Détails de la réunion
   </div>
 </div>
 <!-- Modal Modifier -->
-<div class="modal fade" id="modifierModal1" tabindex="-1" role="dialog" aria-labelledby="modifierModalLabel" aria-hidden="true">
+<div class="modal fade" id="modifierModal" tabindex="-1" role="dialog" aria-labelledby="modifierModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
     <div class="modal-content">
       <div class="modal-header bckgndclr">
@@ -84,7 +84,6 @@ Détails de la réunion
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="table-responsive">
-        <h5 class="text-center">Participants</h5>
         <table class="table table-borderless rounded">
           <thead>
             <tr>
@@ -97,17 +96,9 @@ Détails de la réunion
             </tr>
           </thead>
             <tr class="bckgndclr">
-              <td class="text-center">Stagiaire</td>
-              <td class="text-center">Stagiaire</td>
-              <td class="text-center d-none d-md-table-cell">Stagiaire</td>
-              <td class="text-center d-none d-md-table-cell">29/01/2024</td>
-              <td class="text-center"><button type="button" class="btn btn-primary btn-sm">Editer</button></td>
-              <td class="text-center"><button type="button" class="btn btn-outline-info btn-sm">Supprimer</button></td>
-            </tr>
-            <tr class="bckgndclr">
-              <td class="text-center">Administrateur</td>
-              <td class="text-center">Administrateur</td>
-              <td class="text-center d-none d-md-table-cell">Administrateur</td>
+              <td class="text-center">UBEDA</td>
+              <td class="text-center">kevin</td>
+              <td class="text-center d-none d-md-table-cell">Admin</td>
               <td class="text-center d-none d-md-table-cell">29/01/2024</td>
               <td class="text-center"><button type="button" class="btn btn-primary btn-sm">Editer</button></td>
               <td class="text-center"><button type="button" class="btn btn-outline-info btn-sm">Supprimer</button></td>

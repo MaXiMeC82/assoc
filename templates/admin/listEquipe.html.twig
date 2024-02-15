@@ -1,6 +1,6 @@
 {% extends 'template.html.twig' %}
 
-{% block title %}Liste des Responsables{% endblock %}
+{% block title %}Liste des Equipes{% endblock %}
 
 {% block body %}
 
@@ -26,7 +26,7 @@
               <!-- Utilisez la classe d-none d-md-table-cell pour masquer la colonne email sur les petits écrans -->
               <td class="text-center d-none d-md-table-cell">{{ equipe.dater|date('d/m/Y') }}</td>
               <td class="text-center d-none d-md-table-cell">{{ equipe.dater|date('d/m/Y') }}</td>
-              <td class="text-center"><a class="btn btn-outline-info btn-sm" href="" role="button">Afficher</a></td>
+              <td class="text-center"><a class="btn btn-outline-info btn-sm" href="{{ path('app_admin_detailEquipe', {'id': equipe.id}) }}" role="button">Afficher</a></td>
             </tr>
           {% endfor %}
         </table>

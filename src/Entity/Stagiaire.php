@@ -25,10 +25,10 @@ class Stagiaire
     private ?string $nom = null;
 
     #[ORM\Column(length: 10)]
-    private ?string $num_de_telephone = null;
+    private ?string $numdetelephone = null;
 
     #[ORM\Column(length: 50, nullable: true)]
-    private ?string $type_de_presence = null;
+    private ?string $typedepresence = null;
 
     #[ORM\Column(length: 50, nullable: true)]
     private ?string $password = null;
@@ -88,24 +88,24 @@ class Stagiaire
 
     public function getNumDeTelephone(): ?string
     {
-        return $this->num_de_telephone;
+        return $this->numdetelephone;
     }
 
-    public function setNumDeTelephone(string $num_de_telephone): static
+    public function setNumDeTelephone(string $numdetelephone): static
     {
-        $this->num_de_telephone = $num_de_telephone;
+        $this->numdetelephone = $numdetelephone;
 
         return $this;
     }
 
     public function getTypeDePresence(): ?string
     {
-        return $this->type_de_presence;
+        return $this->typedepresence;
     }
 
-    public function setTypeDePresence(?string $type_de_presence): static
+    public function setTypeDePresence(?string $typedepresence): static
     {
-        $this->type_de_presence = $type_de_presence;
+        $this->typedepresence = $typedepresence;
 
         return $this;
     }
@@ -134,12 +134,12 @@ class Stagiaire
         return $this;
     }
 
-    public function getDateDuStage(): ?\DateTimeInterface
+    public function getDateStage(): ?\DateTimeInterface
     {
         return $this->datestage;
     }
 
-    public function setDateDuStage(?\DateTimeInterface $datestage): static
+    public function setDateStage(?\DateTimeInterface $datestage): static
     {
         $this->datestage  = $datestage;
 
