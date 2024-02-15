@@ -63,7 +63,7 @@ class SecurityController extends AbstractController
             $responsable->setPassword($encodedPassword);
 
             // // Ajoutez le rôle ROLE_
-            $responsable->setRoles(['ROLE_ADMIN']);
+            $responsable->setRoles(["ROLE_ADMIN"]);
             $responsable->setResponsabilite('ROLE_ADMIN');
 
             $entityManager->persist($responsable);

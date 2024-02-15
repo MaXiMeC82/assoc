@@ -57,3 +57,28 @@ CREATE TABLE gerer (
 CREATE TABLE assister (
     id INT AUTO_INCREMENT, id_1 INT, PRIMARY KEY (id, id_1), FOREIGN KEY (id) REFERENCES STAGIAIRE (id), FOREIGN KEY (id_1) REFERENCES REUNION (id)
 );
+
+
+INSERT INTO
+    COMPETENCE (nom, id)
+VALUES ('Informatique', 1),
+    ('Finance', 2),
+    ('Marketing', 3),
+    ('Ressources Humaines', 4),
+    ('Développement Web', 5),
+    ('Design graphique', 6),
+    ('Communication', 7),
+    ('Gestion de projet', 8),
+    ('Vente', 9),
+    ('Analyse de données', 10),
+    ('Relations publiques', 11),
+    ('Ingénierie', 12),
+    ('Événementiel', 13),
+    ('Traduction', 14),
+    ('Santé', 15);
+
+
+    INSERT INTO
+    role (responsabilite)
+VALUES ('ROLE_ADMIN'),
+    ('ROLE_RESPONSABLE');

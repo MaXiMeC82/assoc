@@ -6,7 +6,7 @@ Bienvenue
 
 {% block PageTitle %}
 {# Bonjour {{ responsable.prenom }} #}
-Bonjour
+Hello !
 {% endblock %}
 
 {% block body %}
@@ -57,7 +57,7 @@ Bonjour
             </tr>
           </thead>
             <tr class="bckgndclr">
-              <td class="text-center">entrepreneur</td>
+              <td class="text-center">Dev Web & mobile</td>
               <td class="text-center"><button type="button" class="btn btn-primary btn-sm">Editer</button></td>
               <td class="text-center"><button type="button" class="btn btn-outline-info btn-sm">Supprimer</button></td>
             </tr>
@@ -105,7 +105,7 @@ Bonjour
       </div>
 <div class="modal-body bckgndclr">
     <!-- Formulaire pour modifier les données -->
-    <form id="modifierForm" action="{{ path('app_admin_update_responsable')}}" method="post">
+    <form id="modifierForm" action="" method="post">
         <div class="form-group">
             <label for="nouvelleDateDebut"> Nouveau nom :</label>
             <input type="text" class="form-control" name="nom" id="nouvelleDateDebut" placeholder="Entrez votre nom">
