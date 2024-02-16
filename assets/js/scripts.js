@@ -26,6 +26,58 @@ window.addEventListener('DOMContentLoaded', event => {
 });
 
 
+function verifierMotDePasse() {
+    var motDePasse = document.getElementById("inputPassword").value;
+    var motDePasse2 = document.getElementById("inputPassword2").value;
+    var regexMajuscule = /[A-Z]/;
+    var regexMinuscule = /[a-z]/;
+    var regexNombre = /[0-9]/;
+    var regexSpecial = /[^A-Za-z0-9]/;
 
+    if (motDePasse.length < 8 || motDePasse2.length < 8) {
+        alert("Le mot de passe doit contenir au moins 8 caractères.");
+        return false;
+    }
 
+    if (!regexMajuscule.test(motDePasse) || !regexMajuscule.test(motDePasse2)) {
+        alert("Le mot de passe doit contenir au moins 1 majuscule.");
+        return false;
+    }
 
+    if (!regexMinuscule.test(motDePasse) || !regexMinuscule.test(motDePasse2)) {
+        alert("Le mot de passe doit contenir au moins 1 minuscule.");
+        return false;
+    }
+
+    if (!regexNombre.test(motDePasse) || !regexNombre.test(motDePasse2)) {
+        alert("Le mot de passe doit contenir au moins 1 nombre.");
+        return false;
+    }
+
+    if (!regexSpecial.test(motDePasse) || !regexSpecial.test(motDePasse2)) {
+        alert("Le mot de passe doit contenir au moins 1 caractère spécial.");
+        return false;
+    }
+
+    return true;
+}
+
+(function () {
+    'use strict'
+  
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll('.needs-validation')
+  
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms)
+      .forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+  
+          form.classList.add('was-validated')
+        }, false)
+      })
+  })()

@@ -91,7 +91,7 @@ VALUES ('Informatique', 1),
 
 INSERT INTO
     STAGIAIRE (
-        id, email, password, prenom, nom, num_de_telephone, type_de_presence, url_du_cv, datestage, is_validated, is_archived
+        id, email, password, prenom, nom, numdetelephone, typedepresence, url_du_cv, datestage, is_validated, is_archived
     )
 VALUES (
         1, 'stagiaire1@example.com', 'mdp123', 'Laura', 'Martinez', '0612345678', 'temps plein', 'url_cv_1', '2024-02-08', true, false

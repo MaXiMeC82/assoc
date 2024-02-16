@@ -2,13 +2,17 @@
 
 {% block title %}Log in!{% endblock %}
 
+{% block javascript %}
+
+{% endblock %}
+
 {% block body %}
 <section class="text-center mt-5">
   <div class="card mx-auto shadow" style="max-width: 600px;"> <!-- Ajout de la classe "mx-auto" pour centrer horizontalement la carte -->
     <div class="card-body py-5 px-md-5">
       <div class="row d-flex justify-content-center">
         <div class="col-lg-10">
-<form method="post">
+<form method="post" onsubmit="return verifierMotDePasse()" class="needs-validation" novalidate>
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
@@ -48,3 +52,6 @@
                 </div>
             </form>
 {% endblock %}
+
+
+

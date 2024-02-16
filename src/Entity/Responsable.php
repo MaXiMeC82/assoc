@@ -6,6 +6,7 @@ use App\Repository\ResponsableRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 
 #[ORM\Entity(repositoryClass: ResponsableRepository::class)]
@@ -27,6 +28,7 @@ class Responsable implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 20, nullable: true)]
     private ?string $numDeTelephone = null;
+
 
     /**
      * @var string The hashed password
@@ -187,5 +189,4 @@ class Responsable implements UserInterface, PasswordAuthenticatedUserInterface
     {
         return (string) $this->prenom;
     }
-
 }

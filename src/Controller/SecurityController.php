@@ -65,6 +65,7 @@ class SecurityController extends AbstractController
             // // Ajoutez le rôle ROLE_
             $responsable->setRoles(["ROLE_ADMIN"]);
             $responsable->setResponsabilite('ROLE_ADMIN');
+            $responsable->setIsValidated(true);
 
             $entityManager->persist($responsable);
 

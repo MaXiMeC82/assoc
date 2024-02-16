@@ -3,7 +3,7 @@ CREATE TABLE role (
 );
 
 CREATE TABLE STAGIAIRE (
-    id INT AUTO_INCREMENT, email VARCHAR(255) NOT NULL, password VARCHAR(255) NOT NULL, prenom VARCHAR(50) NOT NULL, nom VARCHAR(50) NOT NULL, num_de_telephone VARCHAR(10), type_de_presence VARCHAR(50), url_du_cv VARCHAR(255), datestage DATE, is_validated BOOLEAN, is_archived BOOLEAN, PRIMARY KEY (id)
+    id INT AUTO_INCREMENT, email VARCHAR(255) NOT NULL, password VARCHAR(255) NOT NULL, prenom VARCHAR(50) NOT NULL, nom VARCHAR(50) NOT NULL, numdetelephone VARCHAR(10), typedepresence VARCHAR(50), url_du_cv VARCHAR(255), datestage DATE, is_validated BOOLEAN, is_archived BOOLEAN, PRIMARY KEY (id)
 );
 
 CREATE TABLE COMPETENCE (
@@ -58,7 +58,6 @@ CREATE TABLE assister (
     id INT AUTO_INCREMENT, id_1 INT, PRIMARY KEY (id, id_1), FOREIGN KEY (id) REFERENCES STAGIAIRE (id), FOREIGN KEY (id_1) REFERENCES REUNION (id)
 );
 
-
 INSERT INTO
     COMPETENCE (nom, id)
 VALUES ('Informatique', 1),
@@ -77,8 +76,89 @@ VALUES ('Informatique', 1),
     ('Traduction', 14),
     ('Santé', 15);
 
-
-    INSERT INTO
+INSERT INTO
     role (responsabilite)
 VALUES ('ROLE_ADMIN'),
     ('ROLE_RESPONSABLE');
+
+INSERT INTO
+    STAGIAIRE (
+        email, password, prenom, nom, numdetelephone, typedepresence, url_du_cv, datestage, is_validated, is_archived
+    )
+VALUES (
+        'stagiaire2@example.com', 'mdp123', 'Jean', 'Dupont', '0612345678', 'temps plein', 'url_cv_2', '2024-02-08', true, false
+    ),
+    (
+        'stagiaire3@example.com', 'mdp123', 'Sophie', 'Lefevre', '0612345678', 'temps plein', 'url_cv_3', '2024-02-08', true, false
+    ),
+    (
+        'stagiaire4@example.com', 'mdp123', 'Thomas', 'Martin', '0612345678', 'temps plein', 'url_cv_4', '2024-02-08', true, false
+    ),
+    (
+        'stagiaire5@example.com', 'mdp123', 'Emilie', 'Dubois', '0612345678', 'temps plein', 'url_cv_5', '2024-02-08', true, false
+    ),
+    (
+        'stagiaire6@example.com', 'mdp123', 'Nicolas', 'Moreau', '0612345678', 'temps plein', 'url_cv_6', '2024-02-08', true, false
+    ),
+    (
+        'stagiaire7@example.com', 'mdp123', 'Manon', 'Laurent', '0612345678', 'temps plein', 'url_cv_7', '2024-02-08', true, false
+    ),
+    (
+        'stagiaire8@example.com', 'mdp123', 'Camille', 'Petit', '0612345678', 'temps plein', 'url_cv_8', '2024-02-08', true, false
+    ),
+    (
+        'stagiaire9@example.com', 'mdp123', 'Alexandre', 'Girard', '0612345678', 'temps plein', 'url_cv_9', '2024-02-08', true, false
+    ),
+    (
+        'stagiaire10@example.com', 'mdp123', 'Emma', 'Durand', '0612345678', 'temps plein', 'url_cv_10', '2024-02-08', true, false
+    ),
+    (
+        'stagiaire11@example.com', 'mdp123', 'Mathis', 'Leroy', '0612345678', 'temps plein', 'url_cv_11', '2024-02-08', true, false
+    ),
+    (
+        'stagiaire12@example.com', 'mdp123', 'Chloe', 'Morel', '0612345678', 'temps plein', 'url_cv_12', '2024-02-08', true, false
+    ),
+    (
+        'stagiaire13@example.com', 'mdp123', 'Antoine', 'Fournier', '0612345678', 'temps plein', 'url_cv_13', '2024-02-08', true, false
+    ),
+    (
+        'stagiaire14@example.com', 'mdp123', 'Ines', 'Andre', '0612345678', 'temps plein', 'url_cv_14', '2024-02-08', true, false
+    ),
+    (
+        'stagiaire15@example.com', 'mdp123', 'Hugo', 'Lefebvre', '0612345678', 'temps plein', 'url_cv_15', '2024-02-08', true, false
+    );
+
+INSERT INTO
+    RESPONSABLE (
+        email, password, prenom, nom, num_de_telephone, is_validated, is_archived, roles, responsabilite
+    )
+VALUES (
+        'admin@admin.com', 'Fdplol59@1', 'Jean', 'Dupont', '0612345678', 1, 0, '["ROLE_ADMIN"]', 'ROLE_RESPONSABLE'
+    ),
+    (
+        'responsable2@example.com', 'mot_de_passe_2', 'Marie', 'Martin', '0612345678', 1, 0, '["ROLE_RESPONSABLE"]', 'ROLE_RESPONSABLE'
+    ),
+    (
+        'responsable3@example.com', 'mot_de_passe_3', 'Pierre', 'Durand', '0612345678', 1, 0, '["ROLE_RESPONSABLE"]', 'ROLE_RESPONSABLE'
+    ),
+    (
+        'responsable4@example.com', 'mot_de_passe_4', 'Sophie', 'Lefevre', '0612345678', 1, 0, '["ROLE_RESPONSABLE"]', 'ROLE_RESPONSABLE'
+    ),
+    (
+        'responsable5@example.com', 'mot_de_passe_5', 'Thomas', 'Girard', '0612345678', 1, 0, '["ROLE_RESPONSABLE"]', 'ROLE_RESPONSABLE'
+    ),
+    (
+        'responsable6@example.com', 'mot_de_passe_6', 'Camille', 'Moreau', '0612345678', 1, 0, '["ROLE_RESPONSABLE"]', 'ROLE_RESPONSABLE'
+    ),
+    (
+        'responsable7@example.com', 'mot_de_passe_7', 'Lucas', 'Leroy', '0612345678', 1, 0, '["ROLE_RESPONSABLE"]', 'ROLE_RESPONSABLE'
+    ),
+    (
+        'responsable8@example.com', 'mot_de_passe_8', 'Emma', 'Roux', '0612345678', 1, 0, '["ROLE_RESPONSABLE"]', 'ROLE_RESPONSABLE'
+    ),
+    (
+        'responsable9@example.com', 'mot_de_passe_9', 'Léa', 'André', '0612345678', 1, 0, '["ROLE_RESPONSABLE"]', 'ROLE_RESPONSABLE'
+    ),
+    (
+        'responsable10@example.com', 'mot_de_passe_10', 'Hugo', 'Lefebvre', '0612345678', 1, 0, '["ROLE_ADMIN"]', 'ROLE_ADMIN'
+    );
