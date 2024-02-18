@@ -1,6 +1,6 @@
 <?php
 
-// src/Service/StagiaireService.php
+
 
 namespace App\Service;
 
@@ -11,7 +11,7 @@ class ArchiverService
 {
     private $stagiaireRepository;
     private $responsableRepository;
-    
+
     public function __construct(StagiaireRepository $stagiaireRepository, ResponsableRepository $responsableRepository)
     {
         $this->stagiaireRepository = $stagiaireRepository;
@@ -38,4 +38,3 @@ class ArchiverService
         }
     }
 }
-

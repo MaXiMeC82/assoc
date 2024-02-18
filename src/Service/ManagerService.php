@@ -6,35 +6,47 @@ use App\Entity\Equipe;
 use App\Entity\Reunion;
 use App\Entity\Responsable;
 use App\Entity\Stagiaire;
-use Doctrine\Persistence\ManagerRegistry;
+use App\Repository\EquipeRepository;
+use App\Repository\ReunionRepository;
+use App\Repository\ResponsableRepository;
+use App\Repository\StagiaireRepository;
 
 class ManagerService
 {
-    private $doctrine;
+    private $equipeRepository;
+    private $reunionRepository;
+    private $responsableRepository;
+    private $stagiaireRepository;
 
-    public function __construct(ManagerRegistry $doctrine)
-    {
-        $this->doctrine = $doctrine;
+    public function __construct(
+        EquipeRepository $equipeRepository,
+        ReunionRepository $reunionRepository,
+        ResponsableRepository $responsableRepository,
+        StagiaireRepository $stagiaireRepository
+    ) {
+        $this->equipeRepository = $equipeRepository;
+        $this->reunionRepository = $reunionRepository;
+        $this->responsableRepository = $responsableRepository;
+        $this->stagiaireRepository = $stagiaireRepository;
     }
 
     public function findEquipeById($id): ?Equipe
     {
-        $repository = $this->doctrine->getRepository(Equipe::class);
-        return $repository->find($id);
+        return $this->equipeRepository->find($id);
     }
+
     public function findReunionById($id): ?Reunion
     {
-        $repository = $this->doctrine->getRepository(Reunion::class);
-        return $repository->find($id);
+        return $this->reunionRepository->find($id);
     }
+
     public function findResponsableById($id): ?Responsable
     {
-        $repository = $this->doctrine->getRepository(Responsable::class);
-        return $repository->find($id);
+        return $this->responsableRepository->find($id);
     }
+
     public function findStagiaireById($id): ?Stagiaire
     {
-        $repository = $this->doctrine->getRepository(Stagiaire::class);
-        return $repository->find($id);
+        return $this->stagiaireRepository->find($id);
     }
 }

@@ -13,6 +13,7 @@
       <div class="row d-flex justify-content-center">
         <div class="col-lg-10">
 <form method="post" onsubmit="return verifierMotDePasse()" class="needs-validation" novalidate>
+<h3 class="fw-bold mb-5">Connexion</h3>
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}

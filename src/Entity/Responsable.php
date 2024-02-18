@@ -23,6 +23,9 @@ class Responsable implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $prenom = null;
 
+    #[Assert\Email(
+        message: 'L\'email {{ value }} n\'est pas une adresse valide.',
+    )]
     #[ORM\Column(length: 255, unique: true)]
     private ?string $email = null;
 

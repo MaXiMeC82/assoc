@@ -117,10 +117,16 @@
                             </a>
                         </div>
                     </div>
+                    {% if app.user %}
                      <div class="sb-sidenav-footer">
                         <div class="small">Connecté en tant que :</div>
-                        Administrateur
+                        {{ app.user.prenom|capitalize }} {{ app.user.nom|capitalize }}
                     </div>
+                    {% else %}
+                        <div class="sb-sidenav-footer">
+                        <div class="small">Connecté en tant que :</div>
+                    </div>
+                    {% endif %}
                 </nav>
             </div>
 
