@@ -32,14 +32,14 @@ class StagiaireRepository extends ServiceEntityRepository
             ->getSingleScalarResult();
     }
 
-        // Méthode modifier le status d'un stagiaire (archiver ou  Actif)
-        public function save(Stagiaire $stagiaire)
-        {
-            $this->_em->persist($stagiaire);
-            $this->_em->flush();
-        }
+    // Méthode modifier le status d'un stagiaire (archiver)
+    public function save(Stagiaire $stagiaire)
+    {
+        $this->_em->persist($stagiaire);
+        $this->_em->flush();
+    }
 
-            // Méthode pour mettre à jour les données d'un stagiaire
+    // Méthode pour mettre à jour les données d'un stagiaire
     public function updateStagiaire(Stagiaire $stagiaire, array $newData)
     {
         if (array_key_exists('nom', $newData)) {
@@ -85,4 +85,3 @@ class StagiaireRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
-

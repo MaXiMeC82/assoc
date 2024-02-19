@@ -78,7 +78,7 @@ class AdminController extends AbstractController
         if ($request->isMethod('POST')) {
             // Effectuer l'archivage du stagiaire
             $this->archiverService->archiveResponsableById($id);
-            // Redirection ou autre traitement après l'archivage
+            
         }
         return $this->render('admin/profil.html.twig', ['responsables' => $responsables]);
     }
@@ -94,7 +94,7 @@ class AdminController extends AbstractController
         if ($request->isMethod('POST')) {
             // Effectuer l'archivage du stagiaire
             $this->archiverService->archiveStagiaireById($id);
-            // Redirection ou autre traitement après l'archivage
+            
         }
         return $this->render('admin/profilS.html.twig', ['stagiaire' => $stagiaire]);
     }

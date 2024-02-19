@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 
 namespace App\Service;
@@ -29,31 +29,16 @@ class PaginationService
         return $this->equipeRepository->findBy([], [], $nbre, $offset);
     }
 
-    public function countEquipe(): int
-    {
-        return $this->equipeRepository->countEquipe();
-    }
-
     public function getResponsables(int $page, int $nbre): array
     {
         $offset = ($page - 1) * $nbre;
         return $this->responsableRepository->findBy([], [], $nbre, $offset);
     }
 
-    public function countResponsables(): int
-    {
-        return $this->responsableRepository->countResponsables();
-    }
-
     public function getReunion(int $page, int $nbre): array
     {
         $offset = ($page - 1) * $nbre;
         return $this->reunionRepository->findBy([], [], $nbre, $offset);
-    }
-
-    public function countReunion(): int
-    {
-        return $this->reunionRepository->countReunion();
     }
 
     public function getStagiaire(int $page, int $nbre): array
@@ -65,5 +50,19 @@ class PaginationService
     public function countStagiaire(): int
     {
         return $this->stagiaireRepository->countStagiaire();
+    }
+    public function countReunion(): int
+    {
+        return $this->reunionRepository->countReunion();
+    }
+
+    public function countEquipe(): int
+    {
+        return $this->equipeRepository->countEquipe();
+    }
+
+    public function countResponsables(): int
+    {
+        return $this->responsableRepository->countResponsables();
     }
 }

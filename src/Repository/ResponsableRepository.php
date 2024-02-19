@@ -29,14 +29,14 @@ class ResponsableRepository extends ServiceEntityRepository
             ->getSingleScalarResult();
     }
 
-    // Méthode modifier le status d'un responsable (archiver ou  Actif)
+    // Méthode modifier le status d'un responsable (archiver)
     public function save(Responsable $responsable)
     {
         $this->_em->persist($responsable);
         $this->_em->flush();
     }
 
-    // Méthode pour mettre à jour les données d'un stagiaire
+    // Méthode pour mettre à jour les données d'un responsable
     public function updateStagiaire(Responsable $stagiaire, array $newData)
     {
         if (array_key_exists('nom', $newData)) {
