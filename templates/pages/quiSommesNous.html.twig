@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Qui sommes nous?{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/quiSommesNous.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<div class="ensemble">
+    <h1 id="titrePage">Qui Sommes Nous ?</h1>
+    <div class="container">
+
+        <section class="sections">
+
+            <h1 class="titre">
+                <div id="imageAssoc"></div>
+                <i id="nomAssoc" class="fontNomAssoc">Alihsan Monde</i>
+            </h1>
+
+            <div class="divStructure">
+                <p class="textPresentation">L’association <i class="fontNomAssoc"><strong>Alihsan Monde </strong></i>.
+                    Fondée en 2010, notre association est un pilier de soutien pour les jeunes
+                    déscolarisés de 16 à 25 ans dans le quartier de l’Épidème à Tourcoing et d'ailleur.
+
+                </p>
+                <p class="textPresentation">
+                    Nous sommes plus qu’une association -
+                    nous sommes une famille dédiée à donner aux jeunes les outils dont ils ont besoin pour réussir.
+                    Nos valeurs de partage, de bienveillance, d’écoute et d’accessibilité guident toutes nos actions.
+                </p>
+            </div>
+        </section>
+
+        <section class="sections">
+            <div class="divStructure">
+                <p class="textPresentation">Nous proposons une variété d’activités, allant des ateliers de compétences
+                    professionnelles et des activités
+                    de team-building, au mentorat et coaching.
+                </p>
+                <p class="textPresentation">
+                    Nous organisons également des visites d’entreprises et des rencontres
+                    avec des professionnels pour donner aux jeunes une idée concrète du monde du travail.
+                </p>
+                <p class="textPresentation">
+                    De plus, nous encourageons
+                    nos adhérents à s’impliquer dans des projets communautaires, qui renforcent leur sentiment
+                    d’appartenance et leur
+                    engagement envers la communauté.
+                </p>
+            </div>
+            <div id="positionLogoTourcoing">
+                <div class="dimensionBG-Logo"></div>
+                <img class="logo" src="/img/logo-ville-de-tourcoing 3.png" alt="logoTourcoing">
+            </div>
+        </section>
+
+        <section class="sections">
+            <div id="positionLogoEpideme">
+                <div class="dimensionBG-Logo"></div>
+                <img class="logo" src="/img/Epideme 3.png" alt="logoEpidème">
+            </div>
+            <div class="divStructure">
+                <p class="textPresentation">Au fil des années, nous avons vu de nombreux adhérents transformer leur vie
+                    grâce à nos programmes.
+                    Chaque succès est une affirmation de la valeur de notre travail et un rappel de l’importance de
+                    notre mission.
+                    Alors que nous regardons vers l’avenir, nous sommes stimulés par les possibilités qui s’offrent à
+                    nous et aux
+                    jeunes que nous épaulons.
+                </p>
+                <p class="textPresentation">
+                    Nous sommes toujours à la recherche de bénévoles dévoués pour nous aider dans notre mission. Si vous
+                    êtes
+                    intéressé à faire une différence, nous vous invitons à vous joindre à nous. 
+
+                    Ensemble, nous pouvons
+                    aider les
+                    jeunes à réaliser leur potentiel et à transformer leur vie.
+                </p>
+            </div>
+        </section>
+
+    </div>
+</div>
+{% endblock %}

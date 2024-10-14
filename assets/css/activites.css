@@ -1,0 +1,145 @@
+
+.ensemble{
+       margin: 0% 5%;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+.container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color:  rgb(235, 244, 254);
+    box-shadow: 0 5px 10px rgb(221, 216, 216);
+    padding: 50px 0;
+    margin-bottom: 50px;
+}
+.sections{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: auto;
+    width: 70%;
+    background-color: rgb(253,245,237);
+    box-shadow: 0 4px 15px 0 rgba(134, 182, 255, 0.63);
+    padding: 20px 50px;
+}
+.textPresentation{
+    line-height: 2em;
+}
+.display{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+#fontAM{
+font-size: 30px;
+}
+
+/* section1 -----------------------------------------------*/
+.fontNomAssoc{
+    font-family: 'Italiana', sans-serif;
+    font-size: 20px;
+    color: #40587B ;
+}
+#imageCV{
+    height: 200px;
+    /* width: 150px; */
+}
+.marge > *{
+    margin: 0 20px;
+}
+
+/* section2 -----------------------------------------------*/
+.flexText{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#imageTeamBuilding{
+    height: 200px;
+    transform: translate(0, -20px);
+}
+.margeImage{
+    margin-left: 20px;
+}
+/* section3 -----------------------------------------------*/
+#imageCoach{
+    height: 200px;
+}
+#margeTitreCoach{
+    margin-left: 20px;
+}
+/* section4 -----------------------------------------------*/
+#imageRencontrePro{
+    height: 200px;
+}
+/* section5 -----------------------------------------------*/
+.titre {
+    position: relative;
+    height: 200px;
+    width: 50%;
+    align-items: center;
+    transform: translate(12px, -10px);
+    margin-left: 28%;
+    margin-top: 50px;
+}
+#imageAssoc {
+    position: absolute; 
+    background-image: url('/img/LogoCouleur3.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 100%; 
+    width: 100%; 
+    margin-left: 90px;
+}
+#imageAssoc::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 50%;
+    background: rgba(253,245,237, 0.6); 
+}
+.fontNomAssoc{
+    font-family: 'Italiana', sans-serif;
+    font-size: 20px;
+    color: #40587B ;
+}
+#nomAssoc {
+    position: absolute;
+    font-family: 'Italiana', sans-serif;
+    color: #40587B ;
+    font-size: 60px;
+    height: 100%; 
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+#colonnesProjets {
+    display: flex;
+    flex-direction: row;
+}
+#colonnesProjets > *{
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+margin-right: 15px;
+    padding: 0 10px;
+}
+
+.fond{
+    background-color: rgba(235, 244, 254, 0.8);
+    padding-top: 100px;
+}
+.decalageBas{
+    transform: translate(0, 100px);
+}
+.textjustify{
+text-align: justify;
+}

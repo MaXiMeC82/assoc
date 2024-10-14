@@ -1,0 +1,122 @@
+body{
+    /* margin: 0%; */
+    font-family: 'Roboto', sans-serif;
+    padding-top: 100px;
+    
+}
+@font-face {
+    font-family: 'Italiana';
+    src: url('../fonts/Italiana-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#navbar{
+    width: 98%;
+    height: 80px;
+    background-color: rgb(235, 244, 254);
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px 0px 20px;
+    box-shadow: 0 5px 10px rgb(221, 216, 216);
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+   
+}
+
+#Logo{
+    display: flex;
+    flex-direction: column;
+    width: 180px;
+}
+
+#LogoSite{
+    height: 70px;
+}
+#NomSite{
+    margin-left: 15px;
+    font-family: 'Italiana', sans-serif;
+}
+.typoNomSite{
+    margin-top: 1px;
+}
+.typoNomSiteM{
+    margin-top: -11px;
+}
+#logoNom{
+    display: flex;
+}
+
+.liensNavbar{
+    margin-top: 12px;
+}
+
+.decoLogo{
+    text-decoration: none;
+}
+.deco{
+        text-decoration: none;
+        height: 30px;
+        width: auto;
+        background-color: rgb(235, 244, 254);
+        padding: 10px 10px;
+        border-radius: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+}
+.deco:hover{
+    color: rgb(28,116,188);
+    background-color:rgba(64, 88, 123,0.05) ;
+
+}
+.deco,
+.decoLogo{
+    color: rgb(2, 48, 117);
+}
+
+
+#IconConnexion{
+    height: 60px;
+    margin-top: 5px;
+}
+
+.menu{
+    position: sticky;
+    height: 400px;
+    width: 180px;
+    background-color:rgb(64, 88, 123) ;
+    color: rgb(255, 255, 255);
+    box-shadow: 5px 5px 10px rgb(221, 216, 216);
+    padding-left: 20px;
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    transform: translate(-20px, -6px);
+    z-index: 10;
+}
+.decoLien{
+    text-decoration: none;
+}
+
+.lienMenu{
+    color: rgb(255, 255, 255);
+
+}
+.lienMenu:hover{
+    color: rgb(141, 147, 153);
+}
+.margeContact{
+    margin-top: 40px;
+}
+
+ body nav #Logo .menu{
+    display: none;
+}
+body nav #Logo:hover .menu{
+    display: flex;
+} 
+#sousTitrePages{
+    font-size: 24px;
+}

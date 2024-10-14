@@ -1,0 +1,30 @@
+body{
+    margin: 0%;
+    font-family: 'Roboto', sans-serif;
+}
+
+#footer{
+    width: auto;
+    height: 80px;
+    background-color: #EBF4FE;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+#lienFooter{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.decoLienFooter{
+    text-decoration: none;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: #023075;
+
+}
+.lienHover:hover{
+    text-decoration: underline;
+
+}

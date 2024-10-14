@@ -1,0 +1,33 @@
+
+
+{% block header %}
+<nav id="navbar">
+        <div id="Logo">
+            <div id="logoNom">
+                <a href="{{ path('app_acceuil') }}"><img id="LogoSite" src="{{ asset('img/LogoCouleur3.png') }}" alt="Logo"></a>
+                
+                <div id="NomSite">
+                    <a class="decoLogo" href="{{ path('app_acceuil') }}"><h2 class="typoNomSite">Alihsan</h2></a>
+                    <a class="decoLogo" href="{{ path('app_acceuil') }}"><h2 class="typoNomSiteM"> Monde</h2></a>
+                </div>
+            </div>
+            <div class="menu">
+                <a class="decoLien" href="{{ path('app_qui_sommes_nous') }}"><p class="lienMenu">Qui somme nous ?</p></a>
+                <a class="decoLien" href="{{ path('app_activites') }}"><p class="lienMenu">Activités</p></a>
+                <a class="decoLien" href="{{ path('app_programme') }}"><p class="lienMenu">Programmes</p></a>
+                <a class="decoLien" href="{{ path('app_adherent') }}"><p class="lienMenu">Devenir Adhérent</p></a>
+                <a class="decoLien" href="{{ path('app_benevole') }}"><p class="lienMenu">Devenir Bénévole</p></a>
+                <a class="decoLien" href="{{ path('app_faire_un_don') }}"><p class="lienMenu">Faire un don</p></a>
+                 
+                <a class="decoLien" href="{{ path('app_contact') }}"><p class="lienMenu margeContact">Contact</p></a>
+            </div>
+
+        </div>
+
+        <a class="liensNavbar deco" href="{{ path('app_qui_sommes_nous') }}"><p>Qui sommes nous ?</p></a>
+        <a class="liensNavbar deco" href="{{ path('app_activites') }}"><p> Nos activités</p></a>
+        <a class="liensNavbar deco" href="{{ path('app_contact') }}"><p>Contact</p></a>
+        
+        <a href=""><img id="IconConnexion" src="{{ asset('img/ic_baseline-account-circle.png') }}" alt="connexion"></a>
+    </nav>
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bénévoles{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/benevole.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="ensemble">
+    <h1 id="titrePage">Comment devenir bénévole</h1>
+
+    <div class="container ">
+        <p id="sousTitrePages">Nous serions ravis de
+            vous accueillir dans notre équipe.</p>
+        <div class="flex">
+            <section class="sections sectionPourquoi">
+                <div class="backgroundPourquoi"></div>
+                <div class="contenutext">
+                    <h2>Pourquoi devenir bénévole ?</h2>
+                    <p class="espaceLigne">Devenir bénévole, c’est choisir de donner un peu de son temps pour une cause
+                        qui
+                        nous tient à cœur. En rejoignant notre association en tant que bénévole, vous contribuez
+                        directement
+                        à nos activités et à la réalisation de nos objectifs. Votre aide, quelle qu’elle soit, est
+                        précieuse
+                        et fait une réelle différence.</p>
+                </div>
+            </section>
+            <section class="sections sectionComment">
+                <div class="backgroundComment"></div>
+                <div class="contenutext">
+
+                    <h2>Comment devenir bénévole ? </h2>
+                    <p class="espaceLigne">Si vous êtes prêt à vous engager, il vous suffit de nous envoyer une
+                        demande de formulaire par e-mail. Une fois que nous aurons reçu votre demande, nous vous
+                        enverrons
+                        le formulaire à remplir. N’hésitez pas à nous contacter si vous avez des questions ou besoin
+                        d’aide.
+                        Nous sommes là pour vous accompagner dans cette démarche. Contactez-nous dès aujourd’hui.</p>
+
+
+                </div>
+            </section>
+        </div>
+        <div id="logo">
+            <a class="liens" href="{{ path('app_contact') }}"><button class="btn-hover color-9"><img id="imageLogo" src="/img/mailBlanc.png" alt="mail"></button></a>
+
+        </div>
+        <div class="flex">
+            <section class="sections sectionIntervention">
+                <div class="backgroundIntervention"></div>
+                <div class="contenutext">
+                    <h2>Le bénévolat peut prendre la forme d’interventions</h2>
+                    <p class="espaceLigne">En partageant votre
+                        expérience professionnelle et votre savoir-faire, vous pouvez inspirer et orienter nos jeunes à
+                        la recherche de leur voie. Que ce soit par le biais de présentations de métiers ou de visites
+                        d’entreprises, votre contribution peut élargir les horizons et ouvrir de nouvelles opportunités.
+                    </p>
+                </div>
+            </section>
+            <section class="sections sectionDon">
+                <div class="backgroundDon"></div>
+                <div class="contenutext">
+                    <h2>Si vous avez envie de contribuer mais vous manquez de temps <a id="FaitesUnDon" href="{{ path('app_faire_un_don') }}">"Faites un don"</a></h2>
+                    <p class="espaceLigne">Vous pouvez aider l’association grâce à un don. Nous comprenons que tout le
+                        monde
+                        n’a pas toujours le temps de s’engager activement. Cependant, même un petit don peut avoir un
+                        grand
+                        impact. Votre générosité nous permet de continuer notre travail et d’élargir nos initiatives.
+                        Chaque
+                        don, quel que soit son montant, est un pas de plus vers la réalisation de notre mission.</p>
+                </div>
+            </section>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

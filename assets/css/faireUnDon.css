@@ -1,0 +1,126 @@
+
+.ensemble{
+    margin: 0% 5%;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color:  rgb(235, 244, 254);
+    box-shadow: 0 5px 10px rgb(221, 216, 216);
+    padding: 50px 20px;
+    margin-bottom: 50px;
+}
+.sections{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: auto;
+    /* width: 70%; */
+    background-color: rgb(253,245,237);
+    box-shadow: 0 4px 15px 0 rgba(134, 182, 255, 0.63);
+    padding: 20px 50px;
+}
+.espaceLigne{
+    line-height: 2em;
+}
+.flex{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    }
+.ensembleSection{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+.ensembleSection > *{
+    width: 35%;
+}
+   
+/* section1 -------------------------------------------------------------- */
+.sectionPourquoi{
+    position: relative; 
+}
+
+.backgroundPourquoi {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-image: url(/img/LogoCouleur3.png);
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: center ;
+    opacity: 0.1; 
+    z-index: 1;
+}
+/* section2 -------------------------------------------------------------- */
+.sectionComment{
+    position: relative; 
+}
+
+.backgroundComment {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-image: url(/img/mail2.png);
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: center ;
+    opacity: 0.1; 
+    z-index: 1;
+}
+
+/* ?_____________________________________________________________________ */
+#logo{
+    margin-top: 30px;
+    margin-left: 120px;
+
+    align-items: center;
+}
+#imageLogo{
+    height: 100px;
+}
+.btn-hover {
+    width: 200px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    margin: 20px;
+    height: 200px;
+    text-align:center;
+    border: none;
+    background-size: 300% 100%;
+    border-radius: 50%;
+    transition: all .4s ease-in-out;
+}
+
+.btn-hover:hover {
+    background-position: 100% 0;
+    transition: all .4s ease-in-out;
+}
+
+.btn-hover:focus {
+    outline: none;
+}
+
+.btn-hover.color-9 {
+    background-image: linear-gradient(to right, #25aae1, #40587B, #04befe, #40587B);
+    box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75);
+    /* box-shadow: 0 4px 15px 0 rgba(255, 218, 180, 0.75); */
+}
+/* ?_____________________________________________________________________ */

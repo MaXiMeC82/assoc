@@ -1,0 +1,88 @@
+
+.ensemble{
+        margin: 0% 5%;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color:  rgb(235, 244, 254);
+    box-shadow: 0 5px 10px rgb(221, 216, 216);
+    padding: 50px 0;
+    margin-bottom: 50px;
+}
+.sections{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: auto;
+    width: 70%;
+    background-color: rgb(253,245,237);
+    box-shadow: 0 4px 15px 0 rgba(134, 182, 255, 0.63);
+    padding: 20px 50px;
+}
+.textPresentation{
+    line-height: 2.5em;
+}
+
+/* formulaire -----------------------------------------------*/
+
+#formulaire{
+    width: 70%;
+    /* background-color: aqua; */
+    padding: 40px 20px;
+}
+.divChamps{
+    height: auto;
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.champs{
+height: 35px;
+width: 47%;
+}
+#champsObjet{
+height: 40px;
+width: 100%;
+font-size: 25px;
+}
+#champsText{
+height: auto;
+width: 100%;
+}
+
+.communChamps{
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    border: 1px rgb(215, 216, 216) solid;
+    padding-left: 10px;
+}
+.champsEnvoyer{
+     background-color: #40587B;
+    height: 50px;
+    width: 150px;
+    border-radius: 15px;
+    border-color: #40587B;
+    color: white;
+}
+.champsEnvoyer:hover{
+   background-color:  rgb(235, 244, 254);
+   color: black;
+}
+.divEnvoyer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}

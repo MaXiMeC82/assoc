@@ -1,0 +1,33 @@
+.ensemble{
+    margin: 0% 5%;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color:  rgb(235, 244, 254);
+    box-shadow: 0 5px 10px rgb(221, 216, 216);
+    padding: 50px 0;
+    margin-bottom: 50px;
+}
+.sections{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    
+    justify-content: space-between;
+    height: auto;
+    width: 70%;
+    background-color: rgb(253,245,237);
+    box-shadow: 0 4px 15px 0 rgba(134, 182, 255, 0.63);
+    padding: 20px 50px;
+}
+.textPresentation{
+    line-height: 2.5em;
+}

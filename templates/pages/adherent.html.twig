@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Adhérents{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/adherent.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="ensemble">
+    <h1 id="titrePage">Comment devenir adhérent ?</h1>
+
+    <div class="container ">
+        <div class="groupSection">
+            <section class="sections sectionQui">
+                <div class="backgroundQui"></div>
+                <div class="contenutext">
+                    <h2>Qui est consernés ?</h2>
+                    <p class="espaceLigne">Notre association s'adresse aux jeunes de 16 à 25 ans déscolarisés
+                        et cherchent à se
+                        réinsérer
+                        professionnellement. Nous croyons en l'énorme potentiel de chaque individu et nous nous
+                        engageons à
+                        fournir les outils et le soutien nécessaires pour réaliser ce potentiel.</p>
+                </div>
+            </section>
+            <section class="sections sectionPourquoi">
+                <div class="backgroundPourquoi"></div>
+                <div class="contenutext">
+                    <h2>Pourquoi devenir adhérent ?</h2>
+                    <p class="espaceLigne">En devenant adhérent, vous bénéficiez d'un accès à nos programmes de
+                        réinsertion professionnelle,
+                        conçus
+                        pour répondre à vos besoins spécifiques. Vous aurez l'opportunité de développer vos compétences,
+                        de
+                        rencontrer des professionnels et de participer à des projets communautaires enrichissants.
+                        Ensemble,
+                        nous pouvons transformer votre avenir.</p>
+                </div>
+            </section>
+            <section class="sections sectionComment">
+                <div class="backgroundComment"></div>
+                <div class="contenutext">
+                    <h2>Comment devenir adhérent ?</h2>
+                    <p class="espaceLigne">Devenir adhérent est simple. Il vous suffit de nous envoyer une demande d'adhésion par e-mail. Une fois que nous aurons reçu votre demande, nous vous enverrons le
+                        formulaire à remplir. Puis nous vous contacterons pour discuter de vos
+                        besoins.</p>
+                </div>
+            </section>
+        </div>
+        <div id="logo">
+            <a class="liens" href="{{ path('app_contact') }}"><button class="btn-hover color-9"><img id="imageLogo" src="/img/mailBlanc.png"
+                        alt="mail"></button></a>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

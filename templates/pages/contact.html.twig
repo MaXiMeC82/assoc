@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/contact.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="ensemble">
+    <h1 id="titrePage">Contact</h1>
+
+    <div class="container">
+        <p id="sousTitrePages">Vous pouvez nous contacter pour faire une demande de formulaire pour devenir adhérent , devenir bénévole, faire un don ou toutes autres informations </p>
+
+        <section class="sections">
+            
+            <form id="formulaire" action="">
+                <div class="divChamps">
+                    <input class="champs communChamps" type="text" placeholder="Nom*" required>
+                    <input class="champs communChamps" type="text" placeholder="Prénom*" required>
+
+                </div>
+                <div class="divChamps">
+                    <input class="champs communChamps" type="email" placeholder="e-mail*" required>
+                    <input class="champs communChamps" type="tel" placeholder="Téléphone">
+                </div>
+                <div class="divChamps">
+
+                    <select class="communChamps" id="champsObjet" name="choices">
+                        <option value="champsAdherent">Objet: Devinir Adhérent</option>
+                        <option value="champsBenevole">Objet: Devenir Bénévole</option>
+                        <option value="champsDon">Objet: Faire un don</option>
+                        <option value="champsAutre">Objet: Autre</option>
+                    </select>
+                </div>
+                <div class="divChamps">
+                    <textarea name="" class="communChamps" id="champsText" cols="30" rows="10"
+                        placeholder="Votre demande ..."></textarea>
+                </div>
+                <div class="divEnvoyer">
+                    <input class="champsEnvoyer" type="submit" value="Envoyer">
+                </div>
+            </form>
+
+        </section>
+    </div>
+</div>
+{% endblock %}

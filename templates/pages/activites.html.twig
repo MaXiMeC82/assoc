@@ -1,0 +1,181 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Activités{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/activites.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="ensemble">
+    <h1 id="titrePage">Nos activités</h1>
+
+    <div class="container">
+        <p id="sousTitrePages">
+            <i id="fontAM" class="fontNomAssoc"><strong>Alihsan Monde </strong></i> votre passerelle vers l’emploi,
+            offre une diversité d’activités à travers ses cinq domaines d’action principaux.
+        </p>
+        <section class="sections" id="act1">
+            <div>
+                <h2>Ateliers de compétences professionnelles:</h2>
+
+                <p class="textPresentation">
+                    Nos ateliers couvrent des sujets essentiels pour la recherche d’emploi, tels que la rédaction de CV,
+                    la rédaction de lettres de motivation, les techniques de recherche d’emploi, la préparation aux
+                    entretiens et la communication en milieu de travail.
+                </p>
+                <div class="display marge">
+                    <img id="imageCV" src="/img/cv.jpg" alt="">
+                    <p>
+                        <i>“Ces ateliers m’ont aidé à décrocher mon premier emploi. Je ne peux pas assez remercier
+                            l’association Alihsan .” - Témoignage d’un participant
+                        </i>
+                    </p>
+                </div>
+                <p class="textPresentation">
+                    Ces ateliers sont conçus pour vous donner les outils nécessaires pour réussir dans votre recherche
+                    d’emploi. Ils sont animés par des professionnels expérimentés qui sont là pour vous aider à chaque
+                    étape.
+                </p>
+
+
+            </div>
+        </section>
+
+        <section class="sections" id="act2">
+            <div>
+                <h2>Activités de team-building:</h2>
+                <div class="display ">
+                    <div class="flexText">
+                        <p class="textPresentation">
+                            Nos activités de team-building sont conçues pour renforcer l’esprit d’équipe et développer
+                            les
+                            compétences de collaboration.
+                        </p>
+                        <p class="textPresentation">
+                            Elles comprennent des jeux de rôle qui simulent des situations
+                            de travail réelles, des défis sportifs pour encourager la cohésion d’équipe, et des projets
+                            de
+                            groupe où les jeunes peuvent travailler ensemble pour atteindre un objectif commun.
+                        </p>
+                        <p class="textPresentation">
+                            Ces
+                            activités
+                            aident les jeunes à apprendre à travailler efficacement en équipe, une compétence
+                            essentielle
+                            dans
+                            le monde professionnel.
+                        </p>
+                    </div>
+
+                    <img class="margeImage" id="imageTeamBuilding" src="/img/TeamBuilding.png" alt="TeamBuilding">
+                </div>
+
+            </div>
+        </section>
+
+        <section class="sections" id="act3">
+            <img id="imageCoach" src="/img/coach.png" alt="coach">
+            <div>
+                <h2 id="margeTitreCoach">Mentorat et coaching:</h2>
+                <div class="marge flexText">
+
+                    <p class="textPresentation">
+                        Nous offrons des séances de mentorat individuel ou en groupe pour fournir un soutien
+                        personnalisé
+                        aux adhérents.
+                    </p>
+                    <p class="textPresentation">
+                        Nos mentors sont des professionnels expérimentés qui peuvent fournir des conseils
+                        précieux sur la carrière et le développement personnel.
+                    </p>
+                    <p class="textPresentation">
+                        Le coaching peut couvrir des sujets tels
+                        que la définition d’objectifs professionnels, la gestion du stress, et le développement de
+                        compétences de leadership.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <section class="sections" id="act4">
+            <div class="display ">
+                <div >
+                    <h2>Visites d’entreprises et rencontres avec des professionnels:</h2>
+
+                    <p class="textPresentation">
+                        Nous organisons régulièrement des visites sur site dans différentes entreprises. Ces visites
+                        permettent aux jeunes d’obtenir une idée concrète du monde du travail et de comprendre les
+                        attentes des employeurs.
+                    </p>
+                    <p class="textPresentation">
+                        Nous invitons également des professionnels à partager leurs
+                        expériences et à donner des conseils sur leur domaine d’expertise. Ces rencontres peuvent
+                        être une source d’inspiration pour les jeunes et les aider à orienter leur parcours
+                        professionnel.
+                    </p>
+                </div>
+                <img id="imageRencontrePro" src="/img/RencontreProfessionnel.png" alt="rencontrePro">
+            </div>
+
+        </section>
+        <section class="sections" id="act5">
+            <div>
+                <h2>Projets communautaires:</h2>
+                <p class="textPresentation">
+                    Encourager les jeunes à s’impliquer dans des projets qui bénéficient à la communauté peut aider à
+                    développer un sentiment d’appartenance et d’engagement.
+                </p>
+
+                <div id="colonnesProjets">
+                    <div class="fond decalageBas">
+                        <strong>Nettoyage du quartier :</strong>
+                        <p class="textjustify"> Organiser des journées de nettoyage où les jeunes
+                            peuvent
+                            aider à
+                            ramasser les déchets dans le quartier. Cela peut non seulement aider à garder le
+                            quartier
+                            propre,
+                            mais aussi sensibiliser à l’importance de la protection de l’environnement.
+                        </p>
+                    </div>
+                    <div class="fond">
+                        <strong>Jardin communautaire :</strong>
+                        <p class="textjustify"> Entretenir un jardin communautaire où les jeunes peuvent
+                            apprendre
+                            à
+                            cultiver des fruits et légumes. Cela peut également fournir de la nourriture fraîche à la
+                            communauté.
+                        </p>
+                    </div>
+                    <div class="fond">
+                        <strong>Ateliers d’art communautaire :</strong>
+                        <p class="textjustify"> Organiser des ateliers d’art où les jeunes
+                            peuvent
+                            créer des œuvres
+                            d’art
+                            pour embellir le quartier.
+                        </p>
+                    </div>
+                    <div class="fond decalageBas">
+                        <strong>Programme de mentorat pour les plus jeunes par les jeunes : </strong>
+                        <p class="textjustify">Les jeunes de
+                            l’association peuvent
+                            servir de
+                            mentors aux enfants
+                            plus jeunes du quartier, les aidant avec leurs devoirs ou organisant des activités
+                            récréatives.
+                        </p>
+                    </div>
+                </div>
+
+                <h1 class="titre">
+                    <div id="imageAssoc"></div>
+                    <i id="nomAssoc" class="fontNomAssoc">Alihsan Monde</i>
+                </h1>
+
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock %}

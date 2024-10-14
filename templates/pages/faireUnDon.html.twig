@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Faire un don{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/faireUnDon.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="ensemble">
+    <h1 id="titrePage">Faire un don </h1>
+
+    <div class="container">
+        <p id="sousTitrePages">Soutenez notre association et aidez-nous à réinsérer les jeunes en difficulté !</p>
+        <div class="ensembleSection">
+            <section class="sections sectionComment">
+                <div class="backgroundComment"></div>
+                <div class="contenutext">
+                    <h2>Comment faire un don ?</h2>
+                    <p class="espaceLigne">Donner est simple et rapide ! Vous pouvez choisir le montant et la fréquence
+                        de votre don :
+                    </p>
+                    <p class="espaceLigne">
+                        <strong>Le don ponctuel</strong>, qui correspond à un soutien ponctuel à notre association, sans
+                        engagement de
+                        votre part. Vous pouvez donner le montant de votre choix, à partir de 10€.
+                    </p>
+                    <p class="espaceLigne">
+                        <strong>Le don régulier</strong>, qui correspond à un soutien régulier et durable à notre
+                        association, avec un
+                        engagement de votre part. Vous pouvez donner le montant de votre choix, à partir de 5€ par mois
+                        ou par an.
+                    </p>
+                    <p class="espaceLigne">
+                        Pour connaître les modalités de don, il vous suffit de nous envoyer une demande d’information
+                        par e-mail . Nous vous répondrons dans les plus
+                        brefs délais avec les informations nécessaires pour effectuer votre don, ainsi que votre reçu
+                        fiscal.</p>
+                </div>
+            </section>
+            <div class="flex">
+                <section class="sections sectionPourquoi">
+                    <div class="backgroundPourquoi"></div>
+                    <div class="contenutext">
+                        <h2>Pourquoi faire un don ?</h2>
+                        <p class="espaceLigne">En donnant à notre association, vous nous aidez à accompagner les jeunes
+                            en
+                            situation de décrochage vers des parcours de réinsertion. Vous leur offrez une seconde
+                            chance,
+                            vous témoignez de votre solidarité, et vous bénéficiez d’une réduction d’impôt sur du
+                            montant
+                            de votre don.</p>
+                    </div>
+                </section>
+
+
+                <div id="logo">
+                    <a class="liens" href="{{ path('app_contact') }}"><button class="btn-hover color-9"><img id="imageLogo"
+                                src="/img/mailBlanc.png" alt="mail"></button></a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

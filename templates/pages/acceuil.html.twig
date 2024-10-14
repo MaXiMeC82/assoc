@@ -1,0 +1,186 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Acceuil{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/acceuil.css') }}">
+{% endblock %}
+
+{% block body %}
+ <div id="enssemble">
+        <section class="section">
+            <div class="container">
+                <div id="intro">
+                    <div id="lesTitres">
+                        <h1 class="titre padtitre">
+                            Bienvenue dans notre association dédiée à la réinsertion professionnelle,
+                            <!-- pour un retour à l'emploi, -->
+                        </h1>
+
+                        <h1 class="titre">
+                            <div id="imageAssoc"></div>
+                            <i id="nomAssoc" class="fontNomAssoc">Alihsan Monde</i>
+                        </h1>
+                    </div>
+                    <article class="TextPresentation">Un phare d’espoir pour les jeunes déscolarisés de 16 à 25 ans dans
+                        le
+                        quartier de l’Épidème à
+                        Tourcoing.
+
+                        Fondée en 2010, notre mission est de transformer des vies en offrant des opportunités de
+                        réinsertion
+                        professionnelle.
+                        <p>
+                            Nous sommes plus qu’une association, nous sommes une famille dédiée à donner aux jeunes les
+                            outils dont
+                            ils ont besoin pour réussir.
+                            Grâce à nos programmes éducatifs, de mentorat et de soutien à l’emploi, nous avons aidé de
+                            nombreux
+                            jeunes à réaliser leur potentiel.
+                        </p>
+
+                        <p>
+                            Nous invitons les visiteurs, les adhérents, les bénévoles et les donateurs à se joindre à
+                            nous
+                            dans
+                            cette mission passionnante.
+                            Ensemble, nous pouvons faire une différence significative. Rejoignez-nous dans cette
+                            aventure
+                            inspirante. </p>
+                    </article>
+                </div>
+        </section>
+    </div>
+
+    <section class="section sectionAdhérent">
+        <div class="contenantText">
+            <article>
+                <h2>Pour les jeunes de 16 à 25 ans </h2>
+                <p class="TextPresentation">Nos adhérents sont des jeunes de 16 à 25 ans, déscolarisés, cherchant à
+                    se
+                    réinsérer professionnellement.
+                    Nous nous concentrons sur ceux qui nécessitent un soutien pour atteindre leur plein potentiel.
+                    Notre association offre un environnement sûr et stimulant pour apprendre, grandir et réussir.
+                </p>
+                <p class="TextPresentation">
+                    Grâce à nos programmes collectifs et/ou individuel, notre équipe et nos bénévoles vous
+                    aideront
+                    à acquérir les compétences
+                    nécessaires pour commencer dans la vie professionnelle.
+                    Rejoignez-nous en nous contactant par mail.
+                </p>
+            </article>
+        </div>
+        <a class="liens" href="{{ path('app_adherent') }}"><button class="btn-hover color-9">DEVENIR
+                ADHERENT</button></a>
+    </section>
+
+    <section class="section sectionActivites">
+        <a class="liens" href="{{ path('app_activites') }}"><button class="btn-hover color-9">ACTIVITES</button></a>
+
+        <div class="contenantText mb">
+            <article>
+                <h2>Les Activités </h2>
+                <p> <i class="fontNomAssoc espaceLigne"><strong>Alihsan Monde </strong></i> propose une
+                    gamme d’activités visant à soutenir la réinsertion professionnelle des jeunes.
+                </p>
+                <p class="espaceLigne">
+                    Nous offrons des ateliers de compétences professionnelles, des activités de team-building, du
+                    mentorat et du coaching.
+                    Nous organisons également des visites d’entreprises et des rencontres avec des professionnels.
+                </p>
+                <p class="espaceLigne">
+                    En plus de cela,
+                    nous encourageons nos adhérents à s’impliquer dans des projets communautaires, tels que le
+                    nettoyage du
+                    quartier,
+                    la création d’un jardin communautaire, des ateliers d’art et un programme de mentorat. Ces
+                    activités
+                    aident non seulement
+                    les jeunes à acquérir des compétences professionnelles, mais aussi à développer leur confiance
+                    en
+                    eux et leur sens de la responsabilité.
+                </p>
+            </article>
+        </div>
+    </section>
+
+    <section class="section sectionProgramme">
+        <div id="programme">
+            <article>
+                <h2>Nos programmes</h2>
+                <p class="TextPresentation">L’association est fière de présenter ses trois programmes de réinsertion
+                    professionnelle, conçus pour répondre aux besoins spécifiques de nos adhérents.
+                </p>
+                <h4 class="soustitreProg">Le premier programme</h4>
+                <p class="espaceLigne">
+                    Pour tous nouveaux arrivants, quel que soit leur âge. Il offre un soutien
+                    personnalisé pour remettre à niveau leurs compétences et faciliter leur intégration dans le
+                    monde du
+                    travail.
+                </p>
+                <h4 class="soustitreProg">Le deuxième programme</h4>
+                <p class="espaceLigne">
+                    Destiné aux jeunes de 16 à 19 ans, se concentre sur le développement des
+                    compétences de base et la préparation à l’emploi grâce à des ateliers de compétences
+                    professionnelles, des activités de team-building et du mentorat.
+                </p>
+                <h4 class="soustitreProg">Le troisième programme</h4>
+                <p class="espaceLigne">
+                    Pour les 20 à 25 ans, vise à renforcer ces compétences et à offrir des
+                    opportunités d’emploi grâce à des visites d’entreprises et des rencontres avec des
+                    professionnels.
+                    Chaque programme est enrichi par notre engagement envers les projets communautaires, qui
+                    renforcent
+                    le sentiment d’appartenance et la responsabilité sociale de nos adhérents. Rejoignez-nous et
+                    faites
+                    partie de cette transformation positive.
+                </p>
+            </article>
+        </div>
+        <div id="divLienProg">
+            <a href="{{ path('app_programme', {'_fragment':'prog1'}) }}"><button class="btn-hoverProg color-9Prog">Programme
+                    1</button></a>
+            <a href="{{ path('app_programme', {'_fragment':'prog2'}) }}"><button class="btn-hoverProg color-9Prog margeProg-2">Programme
+                    2</button></a>
+            <a href="{{ path('app_programme', {'_fragment':'prog3'}) }}"><button class="btn-hoverProg color-9Prog">Programme
+                    3</button></a>
+
+        </div>
+    </section>
+
+    <section class="section sectionParticipation">
+
+        <div class="contenantText">
+            <article>
+                <h2>Pour les participations... </h2>
+                <p class="TextPresentation">Rejoignez l’association <i class="fontNomAssoc"><strong>Alihsan Monde
+                        </strong></i> en tant que bénévole et faites une différence dans la vie des jeunes.
+                    Votre expertise professionnelle peut aider à éclairer leur chemin.
+                </p>
+                <p class="TextPresentation">
+                    Si vous êtes un
+                    professionnel,
+                    envisagez de partager votre expérience ou d’organiser une visite de votre entreprise.
+   Chaque contribution compte. Votre générosité peut soutenir notre mission.
+                </p>
+                <p class="TextPresentation">
+                 
+                    Les dons à l’association aident à financer nos programmes et à changer des vies. Ensemble,
+                    nous pouvons aider les jeunes à réaliser leur potentiel. 
+                </p>
+                <p class="TextPresentation">
+                    
+                    Merci pour votre soutien.
+
+                </p>
+
+            </article>
+        </div>
+
+
+        <a class="liens" href="{{ path('app_benevole') }}"><button class="btn-hover color-9">PARTICIPEZ</button></a>
+    </section>
+    </div>
+{% endblock %}

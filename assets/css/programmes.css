@@ -1,0 +1,67 @@
+.ensemble{
+    margin: 0% 5%;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color:  rgb(235, 244, 254);
+    box-shadow: 0 5px 10px rgb(221, 216, 216);
+    padding: 50px 0;
+    margin-bottom: 50px;
+}
+.sections{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    width: 70%;
+    background-color: rgb(253,245,237);
+    box-shadow: 0 4px 15px 0 rgba(134, 182, 255, 0.63);
+    padding: 20px 50px;
+}
+.textPresentation{
+    line-height: 2.5em;
+}
+.activitesDesProg{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.activitesDesProg > a{
+  text-decoration: none;
+}
+.decoLiensActiv{
+    color: white;
+    height: 25px;
+    width: auto;
+    background-color: #40587B;
+    padding: 10px 30px;
+    border-radius: 25px;
+    margin: 10px;
+        color: rgb(28,116,188);
+    background-color:rgba(64, 88, 123,0.05) ;
+  
+}
+.decoLiensActiv:hover{
+    color: white;
+    background-color: #40587B;
+}
+
+
+
+.espaceLigne{
+    line-height: 2em;
+}
+/* section1 -----------------------------------------------*/
+
+/* section 2-----------------------------------------------*/
+
+/* section 3----------------------------------------------*/

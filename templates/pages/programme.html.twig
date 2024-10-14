@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Programmes{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/programmes.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="ensemble">
+    <h1 id="titrePage">Nos Programmes</h1>
+
+    <div class="container">
+
+        <section class="sections">
+            <h2 id="prog1">Le premier programme</h2>
+            <p>Conçu pour accueillir tous les nouveaux arrivants, quel que soit leur âge.</p>
+            <p class="espaceLigne">
+                Nous comprenons que chaque individu a un ensemble unique de compétences et d'expériences. C'est pourquoi
+                nous offrons un soutien personnalisé pour évaluer et améliorer leurs compétences existantes, tout en
+                développant de nouvelles compétences nécessaires pour réussir dans le monde du travail. Notre objectif
+                est de faciliter leur transition et leur intégration dans le monde du travail.
+            </p>
+            <p>
+                L'objectif de ce programme, l'adhérent doit être capable de rédiger un CV, une lettre de motivation, 
+                gérer un carnet de recherche. 
+            </p>
+            <p>Les activités associées :</p>
+            <div class="activitesDesProg">
+                <a href=" {{ path('app_activites',  {'_fragment':'act1'}) }}"><h4 class="decoLiensActiv">Ateliers de compétences professionnelles</h4></a>
+                <a href="{{ path('app_activites',  {'_fragment':'act2'}) }}"><h4 class="decoLiensActiv">Activités de team-building</h4></a>
+            </div>
+        </section>
+        <section class="sections">
+            <h2 id="prog2">Le deuxième programme</h2>
+            <p>Spécifiquement destiné aux jeunes de 16 à 19 ans. </p>
+            <p class="espaceLigne">
+                Nous nous concentrons sur
+                le développement des compétences de base et la préparation à l'emploi. Nos ateliers de compétences
+                professionnelles sont conçus pour enseigner des compétences pratiques et applicables. Nous organisons
+                également des activités de team-building pour encourager la collaboration et le travail d'équipe.
+            </p>
+            <p>
+                De plus, notre programme de mentorat offre aux jeunes la possibilité d'apprendre de professionnels
+                expérimentés dans leur domaine d'intérêt.
+            </p>
+            <p>Les activités associées :</p>
+            <div class="activitesDesProg">
+                <a href="{{ path('app_activites',  {'_fragment':'act1'}) }}"><h4 class="decoLiensActiv">Ateliers de compétences professionnelles</h4></a>
+                <a href="{{ path('app_activites',  {'_fragment':'act2'}) }}"><h4 class="decoLiensActiv">Activités de team-building</h4></a>
+                <a href="{{ path('app_activites',  {'_fragment':'act3'}) }}"><h4 class="decoLiensActiv">Mentorat et coaching</h4></a>
+                <a href="{{ path('app_activites',  {'_fragment':'act4'}) }}"><h4 class="decoLiensActiv">Visites d’entreprises et rencontres avec des professionnels</h4></a>
+                <a href="{{ path('app_activites',  {'_fragment':'act5'}) }}"><h4 class="decoLiensActiv">Projets communautaires</h4></a>
+            </div>
+        </section>
+        <section class="sections">
+            <h2 id="prog3">Le troisième programme</h2>
+            <p>Destiné aux 20 à 25 ans, vise à renforcer ces compétences et à offrir des
+                opportunités d'emploi. 
+            </p>
+            <p class="espaceLigne">Nous organisons des visites d'entreprises et des rencontres avec des
+                professionnels pour donner aux jeunes une idée précise du monde du travail. Chaque programme est enrichi
+                par notre engagement envers les projets communautaires, qui renforcent le sentiment d'appartenance et la
+                responsabilité sociale de nos adhérents. Rejoignez-nous et faites partie de cette transformation
+                positive.
+            </p>
+            <p>Les activités associées :</p>
+            <div class="activitesDesProg">
+                <a href="{{ path('app_activites',  {'_fragment':'act1'}) }}"><h4 class="decoLiensActiv">Ateliers de compétences professionnelles</h4></a>
+                <a href="{{ path('app_activites',  {'_fragment':'act2'}) }}"><h4 class="decoLiensActiv">Activités de team-building</h4></a>
+                <a href="{{ path('app_activites',  {'_fragment':'act3'}) }}"><h4 class="decoLiensActiv">Mentorat et coaching</h4></a>
+                <a href="{{ path('app_activites',  {'_fragment':'act4'}) }}"><h4 class="decoLiensActiv">Visites d’entreprises et rencontres avec des professionnels</h4></a>
+                <a href="{{ path('app_activites',  {'_fragment':'act5'}) }}"><h4 class="decoLiensActiv">Projets communautaires</h4></a>
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock %}
