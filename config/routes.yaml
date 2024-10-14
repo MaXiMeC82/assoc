@@ -7,3 +7,7 @@ controllers:
 # qui_sommes_nous:
 #     path: /qui_sommes_nous
 #     controller: App\Controller\AboutController::index
+# config/routes.yaml
+search_users:
+    path: /search
+    controller: App\Controller\UserController::search

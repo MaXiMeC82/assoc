@@ -1,0 +1,64 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Liste des Responsables{% endblock %}
+
+{% block body %}
+
+
+
+<div class="container mt-2">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="table-responsive">
+        <table class="table table-borderless rounded">
+          <thead>
+            <tr>
+              <th class="text-center">Date</th>
+              <!-- Utilisez la classe d-none d-md-table-cell pour masquer la colonne email sur les petits écrans -->
+              <th class="text-center d-none d-md-table-cell">Lieu</th>
+              <th class="text-center">Action</th>
+            </tr>
+          </thead>
+          {% for reunion in reunions %}
+            <tr class="bckgndclr">
+              <td class="text-center">{{ reunion.dater|date('d/m/Y') }}</td>
+              <!-- Utilisez la classe d-none d-md-table-cell pour masquer la colonne email sur les petits écrans -->
+              <td class="text-center d-none d-md-table-cell">{{ reunion.lieu  }}</td>
+              <td class="text-center"><a class="btn btn-outline-info btn-sm" href="{{ path('app_admin_detailReunion', {'id': reunion.id}) }}" role="button">Afficher</a></td>
+            </tr>
+          {% endfor %}
+        </table>
+      </div>
+      <div class="text-center mt-4">
+        <!-- Bouton pour ouvrir le modal -->
+        <a role="button" type="button" class="btn btn-primary btn-sm"  href="{{ path('app_admin_add_reunion')}}">
+          Ajouter
+        </a>
+      </div>
+
+      {% if isPaginated %}
+      <nav aria-label="" class="mt-4">
+        <ul class="pagination justify-content-center">
+          {% if page != 1 %}
+            <li class="page-item">
+              <a class="page-link" href="{{ path('app_admin_reunion', {page: page - 1, nbre: nbre})}}">Précédent</a></li>
+          {% endif %}
+          {% for i in range(1, nbrePage) %}
+            <li class="page-item"><a class="page-link" href="{{ path('app_admin_reunion', {page: i, nbre: nbre})}}">{{i}}</a></li>
+          {% endfor %}
+          {% if page != nbrePage %}
+          <li class="page-item"><a class="page-link" href="{{ path('app_admin_reunion', {page: page + 1, nbre: nbre})}}">Suivant</a></li>
+        {% endif %}
+        </ul>
+      </nav>
+      {% endif %}
+
+    </div>
+  </div>  
+</div>
+
+{% endblock %}
+
+{% block PageTitle %}
+Gestion des Reunions
+{% endblock %}

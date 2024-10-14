@@ -1,0 +1,48 @@
+{% extends 'template.html.twig' %}
+
+{% block title %} Gestion des admins {% endblock %}
+
+{% block PageTitle %} {% endblock %}
+
+
+{% block body %}
+<section class="text-center mt-5">
+  <div class="card mx-auto shadow" style="max-width: 600px;"> <!-- Ajout de la classe "mx-auto" pour centrer horizontalement la carte -->
+    <div class="card-body py-5 px-md-5">
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg-10"> <!-- Réduction de la taille de la colonne à 10 colonnes pour centrer le contenu -->
+          <h3 class="fw-bold mb-5">Ajouter un Employé</h3>
+          {{ form_start(form) }}
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                  {{ form_row(form.prenom, {'attr': {'placeholder': 'Entrez votre prénom'}}) }}
+                </div>
+              </div>
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                  {{ form_row(form.nom, {'attr': {'placeholder': 'Entrez votre nom'}}) }}
+                </div>
+              </div>
+            </div>
+            <div class="form-outline mb-4">
+              {{ form_row(form.email) }}
+            </div>
+            <div class="form-outline mb-4">
+              {{ form_row(form.password) }}
+            </div>
+              <div class="form-group mb-4">
+                  {{ form_label(form.responsabilite, 'Responsabilité') }}
+                  {{ form_widget(form.responsabilite, {'attr': {'class': 'form-select'}}) }}
+              </div>
+              {{ form_row(form.submit) }}
+          {{ form_end(form) }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% endblock %}
+    

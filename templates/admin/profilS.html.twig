@@ -1,0 +1,87 @@
+    
+    {% extends 'template.html.twig' %}
+
+{% block title %}
+Bienvenue
+{% endblock %}
+
+{% block PageTitle %}
+{# Bonjour {{ responsable.prenom }} #}
+Bonjour
+{% endblock %}
+
+{% block body %}
+    
+
+    <div class="text-center">
+        <img src="{{ asset('img/logo.jpg') }}" alt="Avatar" class="img-fluid rounded-circle" style="width: 150px;">
+    </div>
+    <div class="text-center mt-3">
+        <h5><strong>{{ stagiaire.nom|capitalize }} {{ stagiaire.prenom|capitalize }}</strong></h5> 
+    </div>
+    <div class="text-center mt-1">
+        <p style="margin: 0">{{ stagiaire.email }}</p> 
+    </div>
+    <div class="text-center mb-1">
+        <p>Téléphone : {{ stagiaire.numdetelephone }}</p> 
+    </div>
+<div class="text-center mt-3">
+        <p style="margin: 0"><strong>Rôle : Stagiaire</strong></p>
+</div>
+    <!-- Etat du compte -->
+    <div class="text-center mt-1">
+      {% if stagiaire.isValidated == 1 %}
+        <p style="margin-bottom: 1rem; margin-top: 0"><strong>Etât du compte : Validé</strong></p>
+          {% else %}
+        <p style="margin-bottom: 1rem; margin-top: 0"><strong>Etât du compte : En cours de validation</strong></p>
+        {% endif %}
+    </div> 
+        <div class="text-center mb-1">
+        <p>Type de présence : {{ stagiaire.typedepresence }}</p> 
+        <p>Date du stage : {{ stagiaire.datestage|date('d/m/Y') }} </p> 
+    </div>
+
+
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="table-responsive">
+        <table class="table table-borderless rounded">
+          <thead>
+            <tr>
+              <th class="text-center">Secteur:</th>
+              <th class="text-center"><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="">Ajouter</button></th>
+            </tr>
+          </thead>
+            <tr class="bckgndclr">
+              <td class="text-center">entrepreneur</td>
+              <td class="text-center"><button type="button" class="btn btn-outline-info btn-sm">Supprimer</button></td>
+            </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 text-center">
+                <div class="btn-group" role="group" aria-label="Actions">
+                    <button type="button" class="btn btn-primary mx-2 rounded-2 d-none d-md-block">Mot de passe oublié</button>
+                    <button type="button" class="btn btn-primary mx-2 rounded-2 d-md-none"><i class="fa-solid fa-key"></i></button>
+                    <button type="button" class="btn btn-primary mx-2 rounded-2 d-none d-md-block">Modifier les informations</button>
+                    <button type="button" class="btn btn-primary mx-2 rounded-2 d-md-none"><i class="fa-solid fa-pencil"></i></button>
+                    {# <button type="button" class="btn btn-outline-info mx-2 rounded-2 d-none d-md-block" href="{{ path('app_admin_profilS', {'id': stagiaire.id} )}}" >Archiver le compte</button> #}
+                    <form action="{{ path('app_admin_profilS', {'id': stagiaire.id}) }}" method="post">
+                    <button type="submit" class="btn btn-outline-info mx-2 rounded-2 d-none d-md-block" onclick="return confirm('Êtes-vous sûr de vouloir archiver ce compte ?')">Archiver le compte</button>
+                    <input type="hidden" name="action" value="archive">
+                    </form>
+                    <button type="button" class="btn btn-outline-info mx-2 rounded-2 d-md-none"><i class="fa-solid fa-folder-open"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

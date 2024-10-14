@@ -1,0 +1,57 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}
+Bienvenue
+{% endblock %}
+
+{% block PageTitle %}
+{# Bonjour {{ responsable.prenom }} #}
+
+{% endblock %}
+
+
+{% block body %}
+<section class="text-center mt-5">
+  <div class="card mx-auto shadow" style="max-width: 600px;"> <!-- Ajout de la classe "mx-auto" pour centrer horizontalement la carte -->
+    <div class="card-body py-5 px-md-5">
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg-10"> <!-- Réduction de la taille de la colonne à 10 colonnes pour centrer le contenu -->
+          <h2 class="fw-bold mb-5">Connexion</h2>
+            {{ form_start(form) }}
+              <div class="row">
+                <div class="form-outline mb-4 ">
+                {{ form_row(form.email) }}
+                </div>
+                <div class="form-outline mb-4">
+                  {{ form_row(form.password) }}
+                </div>
+              </div>
+            {{ form_row(form.connexion) }}
+            {{ form_end(form) }}
+        </div>
+      </div>
+      {# <form action="{{ path('app_admin_login') }}" method="post">
+    {% if error %}
+        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+    
+    <label for="username">Email:</label>
+    <input type="text" id="username" name="_username" value="{{ last_username }}" required autofocus>
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+    
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="_password" required>
+    
+    <button type="submit">Login</button>
+</form> #}
+          <div class="row mt-3 justify-content-center"> <!-- Utilisation de la classe justify-content-center -->
+        <div class="col-lg-10 text-center"> <!-- Ajout de la classe text-center -->
+          <p class="mb-0">Vous n'avez pas de compte ? <a href="{{ path('app_admin_subscribe') }}">Créer un nouveau compte</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+    

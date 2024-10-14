@@ -1,0 +1,277 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}
+Bienvenue
+{% endblock %}
+
+{% block PageTitle %}
+{# Bonjour {{ responsable.prenom }} #}
+Bonjour
+{% endblock %}
+
+{% block body %}
+    
+    {% if responsables.isarchived == 0%}
+    <!-- Avatar -->
+    <div class="text-center">
+        <img src="{{ asset('img/logo.jpg') }}" alt="Avatar" class="img-fluid rounded-circle" style="width: 150px;">
+    </div>
+    <!-- Nom et Prenom -->
+    <div class="text-center mt-3">
+        <h5><strong>{{ responsables.nom|capitalize }} {{ responsables.prenom|capitalize }}</strong></h5> 
+    </div>
+    <!-- Email -->
+    <div class="text-center mt-1">
+        <p style="margin: 0">{{ responsables.email }}</p> 
+    </div>
+    <!-- Numero de Tel -->
+    <div class="text-center mb-1">
+        <p>Téléphone : {{ responsables.numDeTelephone }}</p> 
+    </div>
+    <!-- Rôle -->
+<div class="text-center mt-3">
+    {% if responsables.responsabilite == 'ROLE_ADMIN' %}
+        <p style="margin: 0"><strong>Rôle : Administrateur</strong></p>
+    {% else %}
+        <p style="margin: 0"><strong>Rôle : Responsable</strong></p>
+    {% endif %}
+</div>
+    <div class="text-center mt-1">
+      {% if responsables.isArchived == 1 %}
+        <p style="margin-bottom: 1rem; margin-top: 0"><strong>Etât du compte : Archivé</strong></p>
+        {% elseif responsables.isValidated == 1 %}
+          <p style="margin-bottom: 1rem; margin-top: 0"><strong>Etât du compte : Validé</strong></p>
+          {% else  %}
+        <p style="margin-bottom: 1rem; margin-top: 0"><strong>Etât du compte : En cours de validation</strong></p>
+        {% endif %}
+    </div> 
+
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="table-responsive">
+        <table class="table table-borderless rounded">
+          <thead>
+            <tr>
+              <th class="text-center">Secteur:</th>
+              <th class="text-center"><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="">Ajouter</button></th>
+            </tr>
+          </thead>
+            <tr class="bckgndclr">
+              <td class="text-center">entrepreneur</td>
+              <td class="text-center"><button type="button" class="btn btn-outline-info btn-sm">Supprimer</button></td>
+            </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 text-center">
+                <div class="btn-group" role="group" aria-label="Actions">
+                    <!-- Bouton "Mot de passe oublié" en bleu -->
+                     <!-- Bouton Mot de passe oublié visible à partir de la taille d'écran md (768px) -->
+                    <button type="button" class="btn btn-primary mx-2 rounded-2 d-none d-md-block">Mot de passe oublié</button>
+                    <!-- Bouton avec icône de clé visible à une taille d'écran inférieure à md (520px) -->
+                    <button type="button" class="btn btn-primary mx-2 rounded-2 d-md-none"><i class="fa-solid fa-key"></i></button>
+
+                    <!-- Bouton "Modifier mes informations" en bleu -->
+                    <button type="button" class="btn btn-primary mx-2 rounded-2 d-none d-md-block" data-toggle="modal" data-target="#modifierModal">Modifier mes informations</button>
+                    <!-- Bouton avec icône de clé visible à une taille d'écran inférieure à md (520px) -->
+
+                    <button type="button" class="btn btn-primary mx-2 rounded-2 d-md-none"><i class="fa-solid fa-pencil"></i></button>
+                     <!-- <i class="fa-solid fa-pencil"></i> -->
+                    
+                    <!-- Bouton "Archiver mon compte" en orange -->
+                    {# <button type="button" class="btn btn-outline-info mx-2 rounded-2 d-none d-md-block">Archiver le compte</button> #}
+                    <form action="{{ path('app_admin_profil', {'id': responsables.id}) }}" method="post">
+                    <button type="submit" class="btn btn-outline-info mx-2 rounded-2 d-none d-md-block" onclick="return confirm('Êtes-vous sûr de vouloir archiver ce compte ?')">Archiver le compte</button>
+                    <input type="hidden" name="action" value="archive">
+                    </form>
+                    <!-- Bouton avec icône de clé visible à une taille d'écran inférieure à md (520px) -->
+                    <button type="button" class="btn btn-outline-info mx-2 rounded-2 d-md-none"><i class="fa-solid fa-folder-open"></i></button>
+                    <!-- <i class="fa-solid fa-folder-open"></i> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modifierModal" tabindex="-1" role="dialog" aria-labelledby="modifierModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header bckgndclr">
+        <h5 class="modal-title" id="modifierModalLabel">Modifier les données</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+<div class="modal-body bckgndclr">
+    <!-- Formulaire pour modifier les données -->
+    <form id="modifierForm" action="" method="post">
+        <div class="form-group">
+            <label for="nouvelleDateDebut"> Nouveau nom :</label>
+            <input type="text" class="form-control" name="nom" id="nouvelleDateDebut" placeholder="Entrez votre nom">
+        </div>
+        <div class="form-group">
+            <label for="nouvelleDateFin"> Nouveau prénom :</label>
+            <input type="text" class="form-control" name="prenom" id="nouvelleDateFin" placeholder="Entrez votre prénom">
+        </div>
+        <div class="form-group">
+            <label for="nouvelleDateReunion"> Adresse email : </label>
+            <input type="text" class="form-control" name="email" id="nouvelleDateReunion" placeholder="Entrez la nouvelle adresse">
+        </div>
+        <div class="form-group">
+            <label for="nouveauResponsable"> Téléphone :</label>
+            <input type="text" class="form-control" name="numdetelephone" id="nouveauResponsable" placeholder="Entrez le nouveau numéro">
+        </div>
+        {# <div class="form-group">
+            <label for="nouveauSecteur"> Secteur de l'équipe :</label>
+            <input type="text" class="form-control" id="nouveauSecteur" placeholder="Entrez le nouveau secteur">
+        </div> #}
+        <!-- Conteneur des boutons aligné à droite -->
+        <div class="d-flex justify-content-end">
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
+            <button type="button" class="btn btn-outline-info ml-2" data-dismiss="modal">Annuler</button>
+        </div>
+    </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% else %}
+
+   
+
+    <!-- Avatar -->
+    <div class="text-center">
+        <img src="{{ asset('img/logo.jpg') }}" alt="Avatar" class="img-fluid rounded-circle" style="width: 150px;">
+    </div>
+    <!-- Nom et Prenom -->
+    <div class="text-center mt-3">
+        <h5><strong>{{ responsables.nom|capitalize }} {{ responsables.prenom|capitalize }}</strong></h5> 
+    </div>
+    <!-- Email -->
+    <div class="text-center mt-1">
+        <p style="margin: 0">{{ responsables.email }}</p> 
+    </div>
+    <!-- Numero de Tel -->
+    <div class="text-center mb-1">
+        <p>Téléphone : {{ responsables.numDeTelephone }}</p> 
+    </div>
+    <!-- Rôle -->
+<div class="text-center mt-3">
+    {% if responsables.responsabilite == 'ROLE_ADMIN' %}
+        <p style="margin: 0"><strong>Rôle : Administrateur</strong></p>
+    {% else %}
+        <p style="margin: 0"><strong>Rôle : Responsable</strong></p>
+    {% endif %}
+</div>
+    <!-- Etat du compte -->
+    <div class="text-center mt-1">
+      {% if responsables.isArchived == 1 %}
+        <p style="margin-bottom: 1rem; margin-top: 0"><strong>Etât du compte : Archivé</strong></p>
+        {% elseif responsables.isValidated == 1 %}
+          <p style="margin-bottom: 1rem; margin-top: 0"><strong>Etât du compte : Validé</strong></p>
+          {% else  %}
+        <p style="margin-bottom: 1rem; margin-top: 0"><strong>Etât du compte : En cours de validation</strong></p>
+        {% endif %}
+    </div> 
+
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="table-responsive">
+        <table class="table table-borderless rounded">
+          <thead>
+            <tr>
+              <th class="text-center">Secteur:</th>
+              <th class="text-center"><button type="button" class="btn btn-primary btn-sm disabled" data-toggle="modal" data-target="">Ajouter</button></th>
+            </tr>
+          </thead>
+            <tr class="bckgndclr">
+              <td class="text-center">entrepreneur</td>
+              <td class="text-center"><button type="button" class="btn btn-outline-info btn-sm disabled">Supprimer</button></td>
+            </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 text-center">
+                <div class="btn-group" role="group" aria-label="Actions">
+                    <!-- Bouton "Mot de passe oublié" en bleu -->
+                     <!-- Bouton Mot de passe oublié visible à partir de la taille d'écran md (768px) -->
+                    <button type="button" class="btn btn-primary mx-2 rounded-2 d-none d-md-block disabled">Mot de passe oublié</button>
+                    <!-- Bouton avec icône de clé visible à une taille d'écran inférieure à md (520px) -->
+                    <button type="button" class="btn btn-primary mx-2 rounded-2 d-md-none disabled"><i class="fa-solid fa-key"></i></button>
+
+                    <!-- Bouton "Modifier mes informations" en bleu -->
+                    <button type="button" class="btn btn-primary mx-2 rounded-2 d-none d-md-block disabled" data-toggle="modal" data-target="#modifierModal">Modifier mes informations</button>
+                    <!-- Bouton avec icône de clé visible à une taille d'écran inférieure à md (520px) -->
+
+                    <button type="button" class="btn btn-primary mx-2 rounded-2 d-md-none disabled"><i class="fa-solid fa-pencil"></i></button>
+                     <!-- <i class="fa-solid fa-pencil"></i> -->
+                    
+                    <!-- Bouton "Archiver mon compte" en orange -->
+                    {# <button type="button" class="btn btn-outline-info mx-2 rounded-2 d-none d-md-block">Archiver le compte</button> #}
+                    <form action="{{ path('app_admin_profil', {'id': responsables.id}) }}" method="post">
+                    <button type="submit" class="btn btn-outline-info mx-2 rounded-2 d-none d-md-block disabled" onclick="return confirm('Êtes-vous sûr de vouloir archiver ce compte ?')">Archiver le compte</button>
+                    <input type="hidden" name="action" value="archive">
+                    </form>
+                    <!-- Bouton avec icône de clé visible à une taille d'écran inférieure à md (520px) -->
+                    <button type="button" class="btn btn-outline-info mx-2 rounded-2 d-md-none disabled"><i class="fa-solid fa-folder-open"></i></button>
+                    <!-- <i class="fa-solid fa-folder-open"></i> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modifierModal" tabindex="-1" role="dialog" aria-labelledby="modifierModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header bckgndclr">
+        <h5 class="modal-title" id="modifierModalLabel">Modifier les données</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+<div class="modal-body bckgndclr">
+    <!-- Formulaire pour modifier les données -->
+    <form id="modifierForm" action="" method="post">
+        <div class="form-group">
+            <label for="nouvelleDateDebut"> Nouveau nom :</label>
+            <input type="text" class="form-control" name="nom" id="nouvelleDateDebut" placeholder="Entrez votre nom">
+        </div>
+        <div class="form-group">
+            <label for="nouvelleDateFin"> Nouveau prénom :</label>
+            <input type="text" class="form-control" name="prenom" id="nouvelleDateFin" placeholder="Entrez votre prénom">
+        </div>
+        <div class="form-group">
+            <label for="nouvelleDateReunion"> Adresse email : </label>
+            <input type="text" class="form-control" name="email" id="nouvelleDateReunion" placeholder="Entrez la nouvelle adresse">
+        </div>
+        <div class="form-group">
+            <label for="nouveauResponsable"> Téléphone :</label>
+            <input type="text" class="form-control" name="numdetelephone" id="nouveauResponsable" placeholder="Entrez le nouveau numéro">
+        </div>
+        <div class="d-flex justify-content-end">
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
+            <button type="button" class="btn btn-outline-info ml-2" data-dismiss="modal">Annuler</button>
+        </div>
+    </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+
+{% endblock %}

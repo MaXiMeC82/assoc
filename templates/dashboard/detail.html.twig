@@ -1,0 +1,37 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}{{ personne.firstname }} {{ personne.name }}{% endblock %}
+
+{% block body %}
+<table class="table">
+  <thead>
+    <tr>
+        <th scope="col">Prenom</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Email</th>
+        <th scope="col">Age</th>
+        <th scope="col">Sexe</th>
+        <th scope="col">id</th>
+        <th scope="col">Modifier</th>
+        <th scope="col">Supprimer</th>
+
+    </tr>
+  </thead>
+        <tbody>
+                <tr>
+                    <td>{{ personne.firstname }}</td>
+                    <td>{{ personne.name }}</td>
+                    <td>{{ personne.email }}</td>
+                    <td>{{ personne.age }}</td>
+                    <td>{{ personne.age }}</td>
+                    <td>{{ personne.id }}</td>
+                    <td><a class="btn btn-primary" href="#" role="button">Modifier</a></td>
+                    <td><button class="btn btn-primary" type="submit">Supprimer</button></td>
+                </tr>
+        </tbody>
+    </table>
+{% endblock %}
+
+{% block PageTitle %}
+    Utilisateur 
+{% endblock %}
